@@ -1,0 +1,24 @@
+.dialogs{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.dialogs .dialogs_item {
+    border: 1px solid #000;
+    width: 30%;
+}
+
+.active {
+    color: gold;
+}
+
+.messages {
+    border: 1px solid #000;
+    width: 70%;
+}
+
+.messages .message {
+    font-size: 20px;
+    color: pink;
+}   

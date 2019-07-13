@@ -1,0 +1,26 @@
+.nav {
+  grid-area: n;
+  background-color: #00B200;
+  padding: 30px;
+}
+
+.item a{
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+}
+
+.item a.activeLink{
+  color: gold;
+}
+
+.navbar_friends{
+  padding-top: 50px;
+}
+
+.navbar_friends h1{
+  color: #fff;
+  font-weight: normal;
+  font-size: 2em;
+  margin-bottom: 5px;
+}

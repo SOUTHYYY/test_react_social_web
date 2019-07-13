@@ -1,0 +1,24 @@
+.dialog {
+    border: 1px solid green;
+    height: 50px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+
+}
+
+.dialog img {
+    display: inline-block;
+    vertical-align: top;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.dialog a {
+    text-decoration: none;
+    color: rgb(36, 70, 4);
+    font-size: 20px;
+    line-height: 100%;
+
+}
