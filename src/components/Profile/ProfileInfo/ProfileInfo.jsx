@@ -6,7 +6,7 @@ const ProfileInfo = () => {
     return(
         <div>
             <div>
-                <img src='https://interier-foto.ru/wp-content/uploads/dlinnye-foto-4.jpg'></img>
+                <img className={styles.profileBackground} src='https://interier-foto.ru/wp-content/uploads/dlinnye-foto-4.jpg'></img>
             </div>
             <div className={styles.descriptionBlock}>
                 ava + description
