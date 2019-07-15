@@ -28,4 +28,8 @@ let state = {
     }
 }
 
+let addPost = () => {
+    
+}
+
 export default state
