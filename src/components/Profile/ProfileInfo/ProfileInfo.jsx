@@ -6,7 +6,7 @@ const ProfileInfo = () => {
     return(
         <div>
             <div>
-                <img src='https://media.macphun.com/img/uploads/uploads/skylum/luminar-plugin/GoldenHour3-Before.jpg?size=1x&q=20'></img>
+                <img src='https://interier-foto.ru/wp-content/uploads/dlinnye-foto-4.jpg'></img>
             </div>
             <div className={styles.descriptionBlock}>
                 ava + description
