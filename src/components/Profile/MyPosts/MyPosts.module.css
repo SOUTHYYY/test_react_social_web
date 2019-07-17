@@ -5,3 +5,23 @@
 .posts {
     margin-top: 20px;
 }
+
+.news_top_block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.place_for_new_post {
+    justify-content: center;
+    width: 200px;
+    resize: none;
+
+}
+
+.qwerty{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

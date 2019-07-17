@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom' // пакет для роутинга 
+import {Route} from 'react-router-dom' // пакет для роутинга 
 import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
@@ -9,7 +9,6 @@ import Dialogs from './components/Dialogs/Dialogs';
 const App = (props) => {
 
   return (
-    <BrowserRouter >
       <div className='app-wrapper'>
         <Header />
         <Navbar state={props.state.navbar} />
@@ -21,7 +20,6 @@ const App = (props) => {
           <Route />
         </div>
       </div>
-    </BrowserRouter>
   )
 }
 

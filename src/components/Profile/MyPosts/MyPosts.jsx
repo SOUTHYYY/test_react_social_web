@@ -10,19 +10,24 @@ const MyPosts = (props) => {
 
     let newPostElement = React.createRef()
     let addPost = () => {
-        debugger;
-        let text = newPostElement.current.value;
-        props.addPost(text);
+        let text = newPostElement.current.value
+        if(newPostElement.current.value == '' || newPostElement.current.value == ' ') {return}
+        else{
+            props.addPost(text)
+            newPostElement.current.value = ''  
+        }
     }
     return(
         <div className={styles.postsBlock}>
-            <h3>My Posts</h3>
-            <div>
-                <div>
-                    <textarea ref={newPostElement}></textarea>
-                </div>
-                <div>
-                    <button onClick={addPost}>Add Post</button>
+            <div className={styles.news_top_block}>
+                <h3>Мои записи</h3>
+                <div className={styles.qwerty}>
+                    <div>
+                        <textarea className={styles.place_for_new_post} ref={newPostElement} placeholder='Что у вас нового?'></textarea>
+                    </div>
+                    <div>
+                        <button onClick={addPost}>Add Post</button>
+                    </div>
                 </div>
             </div>
             <div className={styles.posts}>
