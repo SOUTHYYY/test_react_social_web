@@ -1,6 +1,7 @@
 .item {
     color: greenyellow;
     font-size: 25px;
+    padding: 10px;
 }
 
 .item img {
@@ -12,8 +13,4 @@
 .like{
     color: greenyellow;
     margin-right: 10px;
-}
-
-.dislike{
-    color: red;
 }

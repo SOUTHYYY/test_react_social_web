@@ -6,21 +6,28 @@
     margin-top: 20px;
 }
 
-.news_top_block{
+.news_top_block_container{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.place_for_new_post {
+.textArea{
+    border-radius: 10px;
     justify-content: center;
-    width: 200px;
+    width: 502px;
+    height: 52px;
     resize: none;
 
 }
-
-.qwerty{
+textarea::-webkit-input-placeholder {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    font-size: 13px; 
+}
+.news_top_block{
     display: flex;
     align-items: center;
     flex-direction: column;

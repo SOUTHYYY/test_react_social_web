@@ -12,18 +12,25 @@ const MyPosts = (props) => {
     let addPost = () => {
         let text = newPostElement.current.value
         if(newPostElement.current.value == '' || newPostElement.current.value == ' ') {return}
-        else{
-            props.addPost(text)
-            newPostElement.current.value = ''  
-        }
+        else{ props.addPost(text) }
+    }
+    let onPostChange = () => {
+        let text = newPostElement.current.value
+        props.updateNewPostText(text)
+        
     }
     return(
         <div className={styles.postsBlock}>
-            <div className={styles.news_top_block}>
+            <div className={styles.news_top_block_container}>
                 <h3>Мои записи</h3>
-                <div className={styles.qwerty}>
+                <div className={styles.news_top_block}>
                     <div>
-                        <textarea className={styles.place_for_new_post} ref={newPostElement} placeholder='Что у вас нового?'></textarea>
+                        <textarea className={styles.textArea} 
+                            ref={newPostElement} 
+                            onChange={onPostChange}
+                            placeholder='Что у вас нового?' 
+                            value={props.newPostText}
+                        />
                     </div>
                     <div>
                         <button onClick={addPost}>Add Post</button>
