@@ -1,12 +1,13 @@
-import { rerenderEntireTree } from "../render";
-
+let rerenderEntireTree = () => {
+    console.log('Stay was changed')
+}
 let state = {
     profilePage: {
         posts: [
             {id: 1, message: "Hello everybody!", likesCount: 1},
             {id: 2, message: "It's my first post", likesCount: 15},
         ],
-        newPostText: 'it-kamasutra.com'
+        newPostText: ''
     },
     messagesPage: {
         dialogs: [
@@ -30,7 +31,7 @@ let state = {
     }
 }
 
-export let addPost = () => {
+export const addPost = () => {
     let newPost = {
         id: 5,
         message: state.profilePage.newPostText,
@@ -42,9 +43,14 @@ export let addPost = () => {
     rerenderEntireTree(state)
 }
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText
     rerenderEntireTree(state)
+}
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer // наблюдатель (observer) // publisher-subscriber
+
 }
 
 export default state

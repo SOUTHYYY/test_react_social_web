@@ -19,13 +19,16 @@
     width: 502px;
     height: 52px;
     resize: none;
+    font-size: 20px;
+    line-height: 50px;
 
 }
 textarea::-webkit-input-placeholder {
     display: flex;
     align-items: center;
-    margin-right: 20px;
-    font-size: 13px; 
+    font-size: 20px;
+    line-height: 50px;
+    
 }
 .news_top_block{
     display: flex;
