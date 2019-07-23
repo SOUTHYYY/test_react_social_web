@@ -6,8 +6,9 @@ const Post = (props) => {
         <div className={styles.item}>
             <img src='https://vokrug.tv/pic/person/e/9/a/b/e9abb1b8929cede9f7058672f4b12556.jpeg'></img>
             {props.message}
+            <div className='new-string'></div>
             <div className={styles.like}>
-                <span className={styles.like}>like {props.likesCount}</span>
+                <span className={styles.likesCount}>like {props.likesCount}</span>
             </div>
         </div>
     )

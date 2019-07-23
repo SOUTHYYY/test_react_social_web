@@ -24,7 +24,7 @@ const MyPosts = (props) => {
             <div className={styles.news_top_block_container}>
                 <h3>Мои записи</h3>
                 <div className={styles.news_top_block}>
-                    <div>
+                    <div className={styles.wrapper_textArea}>
                         <textarea className={styles.textArea} 
                             ref={newPostElement} 
                             onChange={onPostChange}

@@ -1,16 +1,28 @@
 .item {
-    color: greenyellow;
+    color: #000;
+    background: #fff;
     font-size: 25px;
     padding: 10px;
+    display: flex;
+    border: 2px solid rgb(201, 199, 199);
+    border-radius: 15px;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .item img {
-    width: 50px;
+    width: 5%;
     height: 50px;
     border-radius: 50%;
+    margin-right: 20px;
 }
 
-.like{
-    color: greenyellow;
+.new-string{
+    display: grid;
+    grid-column-start: 1;
+}
+
+.likesCount{
+    color: #000;
     margin-right: 10px;
 }
