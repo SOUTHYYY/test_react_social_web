@@ -4,8 +4,9 @@
     margin: auto;
 }
 
+
 .dialogs .dialogs_item {
-    border: 1px solid #000;
+    border-top: solid 2px #e7e8ec;
     width: 30%;
 }
 
