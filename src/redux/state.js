@@ -41,7 +41,7 @@ let store = {
         }
         this._state.profilePage.posts.unshift(newPost)
         this._state.profilePage.newPostText = ''
-        this.rerenderEntireTree(this._state)
+        this._callSubscriber(this._state)
     },
     updateNewPostText(newText) {
         this._state.profilePage.newPostText = newText

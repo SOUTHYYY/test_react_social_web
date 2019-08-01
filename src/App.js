@@ -8,8 +8,6 @@ import Dialogs from './components/Dialogs/Dialogs';
 
 const App = (props) => {
 
-  debugger;
-
   return (
       <div className='app-wrapper'>
         <Header />
