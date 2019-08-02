@@ -1,8 +1,46 @@
 .descriptionBlock{
-    padding: 10px;
+    width: 100%;
+    display: flex;
+    background-color: #FFF;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+.leftBlock{
+    width: 30%;
+}
+
+.rightBlock {
+    width: 70%;
 }
 
 .profileBackground{
     height: 256;
     width: 100%;
 }
+
+.profilePhotoBlock {
+    display: flex;
+    justify-content: center;
+}
+
+.profilePhoto {
+    width: 70%;
+    height: 100%;
+}
+
+.mainInfo h1 {
+    margin: -2px;
+    font-size: 30px;
+}
+
+.infoBLock {
+    
+}
+
+.fullInfo span {
+    font-size: 15px;
+    color: #808080;
+}
+
+

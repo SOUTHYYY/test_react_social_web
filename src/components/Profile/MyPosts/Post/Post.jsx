@@ -5,7 +5,7 @@ const Post = (props) => {
     return(
         <div className={styles.item_wrapper}>
             <div className={styles.item_info}>
-                <img src='https://vokrug.tv/pic/person/e/9/a/b/e9abb1b8929cede9f7058672f4b12556.jpeg'></img>
+                <img src='https://pp.userapi.com/c855024/v855024603/ac9e4/cZnQYXZ7a8E.jpg?ava=1'></img>
                 {props.postName}
             </div>
             <div className={styles.post}>
