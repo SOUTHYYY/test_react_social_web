@@ -16,7 +16,7 @@
     padding-bottom: 75px;
 }
 .wrapper_textArea{
-    background-color: #fff;
+    background: #edeef0;
 }
 .textArea{
     background-color: #fff;
@@ -27,6 +27,7 @@
     resize: none;
     font-size: 20px;
     line-height: 50px;
+    
 
 }
  /* Отключил подсвечивание у textarea */
