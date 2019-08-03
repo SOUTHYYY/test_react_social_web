@@ -1,13 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was done by me.
 
-## Available Scripts
+## This project has several tabs by type of news, profile, music, messages, etс:
 
-In the project directory, you can run:
+### `Profile page`
 
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img width="1440" alt="Снимок экрана 2019-08-02 в 15 15 42" src="https://user-images.githubusercontent.com/46690842/62369505-82df9e80-b538-11e9-88f8-b9b02f7e54b9.png">
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
