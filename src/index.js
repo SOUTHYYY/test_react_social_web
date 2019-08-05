@@ -9,11 +9,8 @@ import * as serviceWorker from './serviceWorker'
  let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={store.getState()} 
-                addPost={store.addPost.bind(store)}
-                updateNewPostText={store.updateNewPostText.bind(store)}
-                 />
-        </BrowserRouter>, document.getElementById('root'));
+            <App state={store.getState()} dispatch={store.dispatch.bind(store)}/>
+        </BrowserRouter>, document.getElementById ('root') );
 }
 
 rerenderEntireTree(store.getState());

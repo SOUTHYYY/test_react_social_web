@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+
 let store = {
     _state: {
         profilePage: {
@@ -7,7 +10,7 @@ let store = {
                 {id: 3, message: "Я в лазурном", likesCount: 3},
             ],
             newPostText: '',
-            postName: 'Лаптырев Алексей',
+            postAuthor: 'Лаптырев Алексей',
         },
         messagesPage: {
             dialogs: [
@@ -30,10 +33,20 @@ let store = {
             ]
         }
     },
+    _callSubscriber() {
+        console.log('state changed')
+    },
+
+
     getState() {
         return this._state
     },
-    addPost() {
+    subscribe(observer) {
+        this._callSubscriber = observer // наблюдатель (observer) // publisher-subscriber
+    },
+
+
+    _addPost() {
         let newPost = {
             id: 5,
             message: this._state.profilePage.newPostText,
@@ -43,19 +56,26 @@ let store = {
         this._state.profilePage.newPostText = ''
         this._callSubscriber(this._state)
     },
-    updateNewPostText(newText) {
+    _updateNewPostText(newText) {
         this._state.profilePage.newPostText = newText
         this._callSubscriber(this._state)
     },
-    subscribe(observer) {
-        this._callSubscriber = observer // наблюдатель (observer) // publisher-subscriber
-    },
-    _callSubscriber() {
-        console.log('state changed')
-    },
+
+
+    dispatch(action){ // {type: 'ADD-POST'}
+        if(action.type === ADD_POST){
+            this._addPost()
+        } else if(action.type === UPDATE_NEW_POST_TEXT){
+            this._updateNewPostText(action.newText)
+        }
+    }, 
+    
 }
+
+export const addPostActionCreator = () => ({ type: ADD_POST })
+export const updateNewPostTextActionCreator = (text) => 
+    ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+
 
 export default store
 window.store = store
-
-// store - OOP 

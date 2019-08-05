@@ -5,8 +5,10 @@ import styles from './ProfileInfo.module.css'
 const ProfileInfo = () => {
     return(
         <div>
-            <div>
-                <img className={styles.profileBackground} src='https://interier-foto.ru/wp-content/uploads/dlinnye-foto-4.jpg'></img>
+            <div className={styles.imgWrapper}>
+                <img className={styles.profileBackground} src='https://interier-foto.ru/wp-content/uploads/dlinnye-foto-4.jpg' alt='ваше фото настроения' height='100%'></img>
+                <div className={styles.mask}></div>
+                <button className={styles.profileBackgroundButtonChange}>Изменить картику</button>
             </div>
             <div className={styles.descriptionBlock}>
                 <div className={styles.leftBlock}>
@@ -28,8 +30,8 @@ const ProfileInfo = () => {
                             <p><span>День рождения: </span>30 июля 1916 г.</p>
                             <p><span>Город: </span>Москва</p>
                             <p><span>Семейное положение:</span> не женат</p>
-                            <p> <span>Братья, сестры: </span>Николай Коруна, Иван Демуцкий, Кристиан Гришин, Степа Шарыпов</p>
-                            <p>Сын: Дамир Малеков</p>
+                            <p><span>Братья, сестры: </span>Николай Коруна, Иван Демуцкий, Кристиан Гришин, Степа Шарыпов</p>
+                            <p><span>Сын: </span>Дамир Малеков</p>
                         </div>
                         
                     </div>
