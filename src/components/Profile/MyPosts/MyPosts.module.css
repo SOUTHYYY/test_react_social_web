@@ -1,6 +1,8 @@
 .postsBlock {
+    margin-top: 5px;
     padding: 10px;
-    background: #edeef0;
+    /* background: #edeef0; */
+    background: #fff;
     
 }
 
@@ -14,9 +16,11 @@
     justify-content: center;
     flex-direction: column;
     padding-bottom: 75px;
+    
 }
 .wrapper_textArea{
-    background: #edeef0;
+    /* background: #edeef0; */
+    background: #fff;
 }
 .textArea{
     background-color: #fff;

@@ -1,5 +1,6 @@
 .profile {
     grid-area: c;
-    background: #edeef0;
+    background: #4a76a8;
     width: 100%;
+    border: 5px solid #4a76a8;
   }

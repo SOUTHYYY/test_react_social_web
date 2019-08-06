@@ -1,13 +1,14 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+import profileReduser from "./profile-reduser";
+import dialogsReduser from "./dialogs-reduser";
+import navbarReduser from "./navbar-reduser";
 
 let store = {
     _state: {
         profilePage: {
             posts: [
-                {id: 1, message: "Hello everybody!", likesCount: 1},
+                {id: 3, message: "Я в лазурном", likesCount: 1},
                 {id: 2, message: "It's my first post", likesCount: 15},
-                {id: 3, message: "Я в лазурном", likesCount: 3},
+                {id: 1, message: "Hello everybody", likesCount: 3},
             ],
             newPostText: '',
             postAuthor: 'Лаптырев Алексей',
@@ -23,7 +24,8 @@ let store = {
                 {id: 1, message: 'Hi'},
                 {id: 2, message: 'How are u?'},
                 {id: 3, message: 'Heeey....'}
-            ] 
+            ],
+            newMessageText: '',
         },
         navbar: {
             most_popular_friends: [
@@ -33,8 +35,8 @@ let store = {
             ]
         }
     },
-    _callSubscriber() {
-        console.log('state changed')
+    _callSubscriber(state) {
+        console.log('state changed' + state)
     },
 
 
@@ -46,36 +48,45 @@ let store = {
     },
 
 
-    _addPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-        }
-        this._state.profilePage.posts.unshift(newPost)
-        this._state.profilePage.newPostText = ''
-        this._callSubscriber(this._state)
-    },
-    _updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText
-        this._callSubscriber(this._state)
-    },
+    // _addPost() {
+    //     let newPost = {
+    //         id: this._state.profilePage.posts.length + 1,
+    //         message: this._state.profilePage.newPostText,
+    //         likesCount: 0
+    //     }
+    //     this._state.profilePage.posts.unshift(newPost)
+    //     this._state.profilePage.newPostText = ''
+    //     this._callSubscriber(this._state)
+    // },
+    // _updateNewPostText(newText) {
+    //     this._state.profilePage.newPostText = newText
+    //     this._callSubscriber(this._state)
+    // },
+    // _updateNewMessageText(newText) {
+    //     this._state.messagesPage.newMessageText = newText
+    //     this._callSubscriber(this._state)
+    // },
+    // _sendMessage(){
+    //     let newMessage = {
+    //         id: this._state.messagesPage.messages.length + 1,
+    //         message: this._state.messagesPage.newMessageText
+    //     }
+    //     this._state.messagesPage.messages.push(newMessage)
+    //     this._state.messagesPage.newMessageText = ''
+    //     this._callSubscriber(this._state)
+    // },
 
 
-    dispatch(action){ // {type: 'ADD-POST'}
-        if(action.type === ADD_POST){
-            this._addPost()
-        } else if(action.type === UPDATE_NEW_POST_TEXT){
-            this._updateNewPostText(action.newText)
-        }
+    dispatch(action){
+        
+        this._state.profilePage = profileReduser(this._state.profilePage, action)
+        this._state.messagesPage = dialogsReduser(this._state.messagesPage, action)
+        this._state.navbar = navbarReduser(this._state.navbar, action)
+
+        this._callSubscriber(this._state)
     }, 
     
 }
-
-export const addPostActionCreator = () => ({ type: ADD_POST })
-export const updateNewPostTextActionCreator = (text) => 
-    ({ type: UPDATE_NEW_POST_TEXT, newText: text })
-
 
 export default store
 window.store = store
