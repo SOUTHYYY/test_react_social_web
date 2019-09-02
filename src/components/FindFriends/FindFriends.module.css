@@ -1,0 +1,62 @@
+.wrapper {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #000;
+    color: #000;
+}
+.mainBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 70px;
+}
+
+.container {
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.userCardWrapper {
+    display: flex;
+    height: 150px;
+    width: 330px;
+    border: 1px solid #000;
+    flex-grow: 1;
+    margin: 5px 5px;
+    flex: 0 0 33.333333%;
+    border: 2px solid rgb(201, 199, 199);
+    border-radius: 10px;
+
+}
+.userImageContainer{
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+.userImage {
+    width: 75px;
+    height: 75px;
+    border: solid 1px #000;
+    border-radius: 50%;
+} 
+
+.userInfo {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.userInfo ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}

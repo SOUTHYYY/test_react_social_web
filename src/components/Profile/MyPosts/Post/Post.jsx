@@ -6,7 +6,7 @@ const Post = (props) => {
         <div className={styles.item_wrapper}>
             <div className={styles.item_info}>
                 <img src='https://pp.userapi.com/c855024/v855024603/ac9e4/cZnQYXZ7a8E.jpg?ava=1'></img>
-                {props.postName}
+                {props.postAuthor}
             </div>
             <div className={styles.post}>
                 {props.message}

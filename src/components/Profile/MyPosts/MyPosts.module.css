@@ -25,12 +25,12 @@
 .textArea{
     background-color: #fff;
     border-radius: 10px;
-    justify-content: center;
-    width: 502px;
-    height: 52px;
+    width: 400px;
+    height: 45px;
     resize: none;
     font-size: 20px;
-    line-height: 50px;
+    line-height: 45px;
+    text-indent: 10px;
     
 
 }

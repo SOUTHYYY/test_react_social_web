@@ -1,25 +1,24 @@
 import React from 'react'
 import styles from './MyPosts.module.css'
 import Post from './Post/Post'
-import { addPostActionCreator, updateNewPostTextActionCreator} from '../../../redux/profile-reduser';
 
 
 
 const MyPosts = (props) => {
+    debugger
 
     let postsElements = 
-        props.posts.map( post => <Post message={post.message} likesCount={post.likesCount} postName={props.postName} />)
+        props.posts.map( post => <Post message={post.message} likesCount={post.likesCount} postAuthor={props.postAuthor} key={post.id} />)
 
     let newPostElement = React.createRef()
-    let addPost = () => {
+    let onAddPost = () => {
         let text = newPostElement.current.value
         if(text == '' || text == ' ') return
-        else props.dispatch( addPostActionCreator() ) 
+        else props.addPost() 
     }
     let onPostChange = () => {
         let text = newPostElement.current.value
-        let action = updateNewPostTextActionCreator(text)
-        props.dispatch( action )   
+        props.updateNewPostText(text)   
     }
     return(
         <div className={styles.postsBlock}>
@@ -35,7 +34,7 @@ const MyPosts = (props) => {
                         />
                     </div>
                     <div>
-                        <button onClick={addPost}>Add Post</button>
+                        <button onClick={onAddPost}>Add Post</button>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,17 @@
+
+.container{
+}
 .nav {
   grid-area: n;
   background: #4a76a8;
-  padding: 30px;
+  padding-top: 30px;
+  padding-left: 30px;
+  min-height: 100vh;
 }
 
 .item a{
   text-decoration: none;
+  font-weight: bold;
   font-size: 20px;
   color: #fff;
 }
@@ -16,11 +22,18 @@
 
 .navbar_friends{
   padding-top: 50px;
+  margin-bottom: 20px;
 }
 
 .navbar_friends h1{
   color: #fff;
   font-weight: normal;
   font-size: 2em;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+}
+.findFriendsButton a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: normal;
 }

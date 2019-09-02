@@ -1,9 +1,18 @@
+/* .headerMain{
+  grid-area: h;
+  z-index: 0;
+} */
 .header {
-    grid-area: h;
-    background: #4a76a8;
-  }
-  
-  .header img {
-    height: 100%;
-    width: 8%;
-  }
+  grid-area: h;
+  background: #4a76a8;
+  /* position: fixed; */
+  z-index: 9999;
+}
+
+.header--block {
+  position: fixed;
+}
+.header img {
+  height: 100%;
+  width: 8%;
+}

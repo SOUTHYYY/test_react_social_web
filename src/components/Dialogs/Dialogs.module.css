@@ -43,4 +43,8 @@
 .messages .message {
     font-size: 20px;
     color: pink;
-}   
+}
+
+.sendMessages {
+    display: flex;
+}

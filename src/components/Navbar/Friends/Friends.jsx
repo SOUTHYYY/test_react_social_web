@@ -4,12 +4,12 @@ import FriendItem from './FriendItem/FriendItem';
 
 
 const Friends = (props) => {
-    let PopularFriendsElements = 
-    props.state.most_popular_friends.map( data => <FriendItem name={data.name} id={data.id} image={data.image} /> );
+    let popularFriendsElements = 
+        props.mostPopularFriends.map( data => <FriendItem name={data.name} id={data.id} image={data.image} key={data.id} /> );
     
     return(
         <div className={styles.popular_friends}>
-            {PopularFriendsElements}
+            {popularFriendsElements}
         </div>
     )
 }

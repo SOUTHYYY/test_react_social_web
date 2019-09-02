@@ -1,21 +1,17 @@
 import React from 'react'
 import styles from './ProfileInfo.module.css'
+import MoodPhoto from '../MoodPhoto/MoodPhoto';
 
 
 const ProfileInfo = () => {
     return(
         <div>
-            <div className={styles.imgWrapper}>
-                <img className={styles.profileBackground} src='https://interier-foto.ru/wp-content/uploads/dlinnye-foto-4.jpg' alt='ваше фото настроения' height='100%'></img>
-                <div className={styles.mask}></div>
-                <button className={styles.profileBackgroundButtonChange}>Изменить картику</button>
-            </div>
+            <MoodPhoto />
             <div className={styles.descriptionBlock}>
                 <div className={styles.leftBlock}>
                     <div className={styles.profilePhotoBlock}>
                         <img className={styles.profilePhoto} src="https://sun1-19.userapi.com/c855024/v855024603/ac9e2/KwLT4EKegIM.jpg?ava=1" alt="profile photo"/>
                     </div>
-                
                 </div>
                 <div className={styles.rightBlock}>
                     <div className={styles.infoBLock}>

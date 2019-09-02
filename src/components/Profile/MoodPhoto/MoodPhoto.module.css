@@ -1,20 +1,4 @@
-.descriptionBlock{
-    width: 100%;
-    display: flex;
-    background-color: #FFF;
-    padding-top: 50px;
-    padding-bottom: 100px;
-}
-
-.leftBlock{
-    width: 30%;
-}
-
-.rightBlock {
-    width: 70%;
-}
-
-/* .imgWrapper{
+.imgWrapper{
     position: relative;
     height: 350px;
     background: #FFF;
@@ -57,31 +41,5 @@
     border: 2px solid #FFF;
     font-size: 20px;
     border-radius: 10px;
-    
-} */
-
-.profilePhotoBlock {
-    display: flex;
-    justify-content: center;
+    /* #4a76a8 */
 }
-
-.profilePhoto {
-    width: 70%;
-    height: 100%;
-}
-
-.mainInfo h1 {
-    margin: -2px;
-    font-size: 30px;
-}
-
-.infoBLock {
-    
-}
-
-.fullInfo span {
-    font-size: 15px;
-    color: #808080;
-}
-
-
