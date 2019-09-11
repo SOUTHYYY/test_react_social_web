@@ -1,25 +1,21 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
 
 let initialState = {
-    users: [
-        { id: '1', followed: false, image: 'https://sun9-50.userapi.com/c850636/v850636040/1332d7/1GkYahSrBMw.jpg?ava=1', fullName: 'Александр Новиков', status: 'online', location: {city: "Nizhny Novgorod",
-        country: 'Russia'} },
-        { id: '2', followed: true, image: 'https://sun9-17.userapi.com/c854024/v854024207/a802f/14-FonzBuQs.jpg?ava=1', fullName: 'Лера Абрамова', status: 'offline', location: {city: "Nizhny Novgorod",
-        country: 'Russia'} },
-        { id: '3', followed: false, image: 'https://sun9-42.userapi.com/c858224/v858224520/551f9/tMTEpcD_0FY.jpg?ava=1', fullName: 'Валентин Касницкий', status: 'online', location: {city: "Nizhny Novgorod",
-        country: 'Russia'} },
-        { id: '4', followed: true,  image: 'https://sun9-6.userapi.com/c851120/v851120356/17c43c/__hlNrKnkOY.jpg', fullName: 'Кристиан гришин', status: 'online', location: {city: "Vyksa",
-        country: 'Russia'} },
-        
-    ]
+    users: [],
+    pageSize: 100,
+    totalUsersCount: 0,
+    currentPage: 1,
+    isFetching: false
 }
 
 
 const findFriendsReduser = (state = initialState, action) => {
-
     switch(action.type){
         case FOLLOW:
             return {
@@ -41,21 +37,36 @@ const findFriendsReduser = (state = initialState, action) => {
                     return user
                 })
             }
-        case SET_USERS: {
-            return {...state, users: [...state.users, ...action.users]}
-        }
-
-            
-
+        case SET_USERS: 
+            return {
+                ...state,
+                users: action.users
+            }
+        case SET_CURRENT_PAGE : 
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
+        case SET_TOTAL_USERS_COUNT : 
+            return {
+                ...state,
+                totalUsersCount: action.totalUsersCount
+            }
+        case TOGGLE_IS_FETCHING :
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
         default:
             return state
     }
 
 }
 
-export const followActionCreator = (userId) => ( {type: FOLLOW, userId} )
-export const unfollowActionCreator = (userId) => ( {type: UNFOLLOW, userId} )
-export const setUsersActionCreator = (users) => ({type: SET_USERS, users})
-
-
+export const follow = (userId) => ( {type: FOLLOW, userId} )
+export const unfollow = (userId) => ( {type: UNFOLLOW, userId} )
+export const setUsers = (users) => ({type: SET_USERS, users})
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
+export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount})
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export default findFriendsReduser

@@ -1,24 +1,31 @@
 import React from 'react'
 import styles from './ProfileInfo.module.css'
 import MoodPhoto from '../MoodPhoto/MoodPhoto';
+import Prealoader from '../../Common/Preloader/Preloader';
+import userPhoto from '../../../image/default_user.jpg'
 
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+
+    if(!props.profile){
+        return <Prealoader />
+    }
+
     return(
         <div>
             <MoodPhoto />
             <div className={styles.descriptionBlock}>
                 <div className={styles.leftBlock}>
                     <div className={styles.profilePhotoBlock}>
-                        <img className={styles.profilePhoto} src="https://sun1-19.userapi.com/c855024/v855024603/ac9e2/KwLT4EKegIM.jpg?ava=1" alt="profile photo"/>
+                        <img className={styles.profilePhoto} src={props.profile.photos.large != null ? props.profile.photos.large : userPhoto} alt="profile photo"/>
                     </div>
                 </div>
                 <div className={styles.rightBlock}>
                     <div className={styles.infoBLock}>
                         <div className={styles.mainInfo}>
-                            <h1>Алексей Лаптырев</h1>
+                            <h1>{props.profile.fullName}</h1>
                             <div className={styles.statusInfo}>
-                                <span>изменить статус</span>
+                                <span>{props.profile.statusInfo}</span>
                             </div>
                             <hr/>
                         </div>
@@ -28,8 +35,7 @@ const ProfileInfo = () => {
                             <p><span>Семейное положение:</span> не женат</p>
                             <p><span>Братья, сестры: </span>Николай Коруна, Иван Демуцкий, Кристиан Гришин, Степа Шарыпов</p>
                             <p><span>Сын: </span>Дамир Малеков</p>
-                        </div>
-                        
+                        </div>   
                     </div>
                 </div>
             </div>
