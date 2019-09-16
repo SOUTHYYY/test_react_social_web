@@ -12,13 +12,14 @@ let FindFriends = (props) => {
         for(let i = 1; i <= pagesCount; i++){
             pages.push(i)
         }
+    
 
     return(
         <div className={styles.wrapper}>
-            <div className={styles.mainBox}>
+            <div className={styles.searchBox}>
                 <h1>Поиск новых друзей</h1>
                 <textarea className={styles.textArea}></textarea>
-                <button>Get users</button>
+                <button>Найти друга</button>
             </div>
             <div className={styles.container}>
                 {
@@ -26,10 +27,15 @@ let FindFriends = (props) => {
                         <div className={styles.userCardWrapper}>
                             <div className={styles.userImageContainer}>
                                 <NavLink to={'/profile/' + u.id }>
-                                    <img src={u.photos.small != null ? u.photos.small : userPhoto} alt="user image" className={styles.userImage} />
+                                    <img src={u.photos.small != null ? u.photos.small : userPhoto} alt="" className={styles.userImage} />
                                 </NavLink>
-                                <div className={styles.mask}></div>
-                                <button className={styles.profileBackgroundButtonChange}></button>
+                                <button className={styles.profileBackgroundButtonChange} >
+                                    {
+                                        u.followed
+                                        ? <button onClick={() => {props.unfollow(u.id)}}>Отписаться</button>
+                                        : <button onClick={() => {props.follow(u.id)}}>Подписаться</button>
+                                    }
+                                </button>
                             </div>
                             <div className={styles.userInfo}>
                                 <h2>{u.name}</h2>

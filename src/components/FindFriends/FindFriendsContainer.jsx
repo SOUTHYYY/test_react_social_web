@@ -9,6 +9,7 @@ class FindFriendsСontainer extends React.Component {
     componentDidMount(props) {
         this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
+
             .then(response => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
@@ -25,6 +26,7 @@ class FindFriendsСontainer extends React.Component {
             })
     }
 
+
     render() {
         return <>
             {this.props.isFetching? <Preloader />: null}
@@ -34,6 +36,9 @@ class FindFriendsСontainer extends React.Component {
                         currentPage={this.props.currentPage}
                         onPageChanged={this.onPageChanged}
                         users={this.props.users}
+                        follow={this.props.follow}
+                        unfollow={this.props.unfollow}
+
                     />
                 </>
     }
