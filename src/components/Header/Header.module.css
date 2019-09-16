@@ -7,6 +7,8 @@
   background: #4a76a8;
   /* position: fixed; */
   z-index: 9999;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header--block {
@@ -15,4 +17,15 @@
 .header img {
   height: 100%;
   width: 8%;
+}
+
+.loginBlock {
+  padding-right: 30px;
+  padding-top: 20px;
+  
+}
+
+.loginBlock a {
+  color: aliceblue;
+  text-decoration: none;
 }
