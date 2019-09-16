@@ -12,7 +12,7 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef()
     let onAddPost = () => {
         let text = newPostElement.current.value
-        if(text == '' || text == ' ') return
+        if(text === '' || text === ' ') return
         else props.addPost() 
     }
     let onPostChange = () => {
