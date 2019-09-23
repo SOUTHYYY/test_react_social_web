@@ -58,6 +58,11 @@
     margin: 0;
     padding: 0;
 }
+
+.userInfo a{
+    text-decoration: none;
+    color: #000;
+}
 .pages {
     display: flex;
     justify-content: flex-end;
