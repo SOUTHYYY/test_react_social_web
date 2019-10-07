@@ -1,28 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching } from '../../redux/find-friends-reduser'
+import { follow, unfollow, setCurrentPage, 
+        toggleFollowingProgress, getUsers, findFriend,
+        updateNewSearchText, followSuccess, unfollowSuccess,
+    } from '../../redux/find-friends-reduser'
 import FindFriends from './FindFriends'
 import Preloader from '../Common/Preloader/Preloader.js'
-import { UsersAPI } from '../../API/api'
 
 
 class FindFriendsСontainer extends React.Component {
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-
-        UsersAPI.getUsers(this.props.pageSize, this.props.currentPage).then(data => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-            this.props.setTotalUsersCount(data.totalCount)
-        })
+        this.props.getUsers(this.props.pageSize, this.props.currentPage)
     }
     onPageChanged = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber)
-        this.props.toggleIsFetching(true)
-        UsersAPI.getUsers(this.props.pageSize, pageNumber).then(data => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-        })
+        this.props.getUsers(this.props.pageSize, pageNumber)
     }
     
     render() {
@@ -36,6 +27,8 @@ class FindFriendsСontainer extends React.Component {
                 users={this.props.users}
                 follow={this.props.follow}
                 unfollow={this.props.unfollow}
+                followingInProgress={this.props.followingInProgress}
+                newSearchText={this.props.newSearchText}
             />
         </>
     }
@@ -48,10 +41,13 @@ const mapStateToProps = (state) => {
         totalUsersCount: state.findFriends.totalUsersCount,
         currentPage: state.findFriends.currentPage,
         isFetching: state.findFriends.isFetching,
+        followingInProgress: state.findFriends.followingInProgress,
+        newSearchText: state.findFriends.newSearchText
     }
 }
 
 export default connect(mapStateToProps, {
-    follow, unfollow, setUsers,
-    setCurrentPage, setTotalUsersCount, toggleIsFetching
+    follow, unfollow, setCurrentPage,
+    findFriend, updateNewSearchText, toggleFollowingProgress,
+    getUsers, followSuccess, unfollowSuccess
 })(FindFriendsСontainer)

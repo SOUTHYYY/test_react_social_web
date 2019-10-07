@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './ProfileInfo.module.css'
 import MoodPhoto from '../MoodPhoto/MoodPhoto';
 import Prealoader from '../../Common/Preloader/Preloader';
-import userPhoto from '../../../image/default_user.jpg'
+import defaultUserPhoto from '../../../image/default_user.jpg'
 
 
 const ProfileInfo = (props) => {
@@ -17,7 +17,7 @@ const ProfileInfo = (props) => {
             <div className={styles.descriptionBlock}>
                 <div className={styles.leftBlock}>
                     <div className={styles.profilePhotoBlock}>
-                        <img className={styles.profilePhoto} src={props.profile.photos.large != null ? props.profile.photos.large : userPhoto} alt=""/>
+                        <img className={styles.profilePhoto} src={props.profile.photos.large != null ? props.profile.photos.large : defaultUserPhoto} alt=""/>
                     </div>
                 </div>
                 <div className={styles.rightBlock}>
