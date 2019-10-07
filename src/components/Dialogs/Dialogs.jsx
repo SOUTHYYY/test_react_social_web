@@ -5,6 +5,7 @@ import Message from './Message/Message'
 
 
 const Dialogs = (props) => {
+    debugger
 
     let dialogsElements =
     props.messagesPage.dialogs.map( dialog => <DialogItem name={dialog.name} id={dialog.id} image={dialog.image} key={dialog.id} /> );
@@ -27,33 +28,27 @@ const Dialogs = (props) => {
                 { dialogsElements }
             </div>
             <div className={styles.messages}>
-                <div className={`${styles.messagesHeader} ${styles.border}`}>
+                <div className={styles.messagesHeader + ' ' + styles.border}>
                     <div className={styles.backtoMessages}>
-                        <img src="/src/image/galka.png" alt=""/>
+
                     </div>
-                    <div className={styles.messagesHeaderName + " " + styles.border}>
+                    <div className={styles.messagesHeaderName}>
                         <h3>Аня Ковалева</h3>
                     </div>
-                    <div className={styles.messagesHeaderPhoto + " " + styles.border}>
+                    <div className={styles.messagesHeaderPhoto}>
                         <img className={styles.messagesHeaderPhotoItem} src="https://pp.userapi.com/c841633/v841633205/751d2/zSqaD3S_nn4.jpg?ava=1" alt="Ваш собеседник"/>
                     </div>
-
                 </div>
-                <div>
+                <div className={styles.messagesElements}>
                     { messagesElements }
                 </div>
                 <div className={styles.sendMessages}>
-                    <div>
                         <textarea value={newMessageText}
                             onChange={onNewMessageTextChange}
                             placeholder="Введите ваше сообщение">
                         </textarea>
-                    </div>
-                    <div>
                         <button onClick={onSendMessageClick}>Отправить</button>
-                    </div>
-                </div>  
-
+                </div>
             </div>
         </div>
     )
