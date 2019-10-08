@@ -7,15 +7,11 @@ import { NavLink } from 'react-router-dom'
 
 
 let FindFriends = (props) => {
-    debugger
-
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-    debugger
     let pages = []
 
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
-        debugger
     }
     
     let newPostElement = React.createRef()

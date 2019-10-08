@@ -20,12 +20,32 @@
 }
 
 .loginBlock {
-  padding-right: 30px;
-  padding-top: 20px;
-  
+  color: aliceblue;
+  text-decoration: none;
+  padding: 0 20px;
+  line-height: 100%;
+  margin-right: 35px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  height: 100%;
 }
-
+.loginBlock:hover{
+  background-color: #3a5d85;
+}
 .loginBlock a {
   color: aliceblue;
   text-decoration: none;
+  padding: 0 20px;
+  line-height: 100%;
+  margin-right: 35px;
+  display: flex;
+  align-items: center;
+  font-weight: 550;
+  height: 100%;
+}
+.isEnter {
+}
+.isEnter:hover{
+  background-color: #3a5d85;
 }

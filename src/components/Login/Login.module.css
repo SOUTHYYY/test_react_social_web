@@ -1,0 +1,47 @@
+
+.container{
+}
+
+
+
+.formContainer form {
+    border-radius: 20px;
+    margin-top: 15%;
+    /* border: 3px solid #4a76a8; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.formContainer h1{
+    color: #4a76a8; 
+}
+
+.formContainer label{ 
+    padding-right: 10px;
+    font-size: 20px;
+}
+
+.formContainer input {
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.string {
+    margin: 5px;
+}
+
+.acceptRegistrationButton{
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 25px;
+    font-weight: bold;
+    color: #4a76a8;
+    border: 2px solid  #4a76a8;
+
+}

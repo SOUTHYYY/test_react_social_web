@@ -3,6 +3,7 @@ import styles from './ProfileInfo.module.css'
 import MoodPhoto from '../MoodPhoto/MoodPhoto';
 import Prealoader from '../../Common/Preloader/Preloader';
 import defaultUserPhoto from '../../../image/default_user.jpg'
+import ProfileStatus from './ProfileStatus'
 
 
 const ProfileInfo = (props) => {
@@ -24,6 +25,7 @@ const ProfileInfo = (props) => {
                     <div className={styles.infoBLock}>
                         <div className={styles.mainInfo}>
                             <h1>{props.profile.fullName}</h1>
+                            <ProfileStatus status='Hello my friends'/>
                             <div className={styles.statusInfo}>
                                 <span>{props.profile.statusInfo}</span>
                             </div>

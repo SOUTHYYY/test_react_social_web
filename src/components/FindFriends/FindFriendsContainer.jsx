@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { follow, unfollow, setCurrentPage, 
-        toggleFollowingProgress, getUsers, findFriend,
-        updateNewSearchText, followSuccess, unfollowSuccess,
-    } from '../../redux/find-friends-reduser'
+import {
+    follow, unfollow, setCurrentPage,
+    toggleFollowingProgress, getUsers, findFriend,
+    updateNewSearchText, followSuccess, unfollowSuccess,
+} from '../../redux/find-friends-reduser'
 import FindFriends from './FindFriends'
 import Preloader from '../Common/Preloader/Preloader.js'
+import { compose } from 'redux'
+import { WithAuthRedirect } from '../HOC/WithAuthRedirect'
 
 
 class FindFriendsСontainer extends React.Component {
@@ -15,7 +18,7 @@ class FindFriendsСontainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.getUsers(this.props.pageSize, pageNumber)
     }
-    
+
     render() {
         return <>
             {this.props.isFetching ? <Preloader /> : null}
@@ -46,8 +49,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {
-    follow, unfollow, setCurrentPage,
-    findFriend, updateNewSearchText, toggleFollowingProgress,
-    getUsers, followSuccess, unfollowSuccess
-})(FindFriendsСontainer)
+export default compose(
+    WithAuthRedirect,
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage,findFriend, updateNewSearchText, toggleFollowingProgress,getUsers, followSuccess, unfollowSuccess}),
+)(FindFriendsСontainer)
+

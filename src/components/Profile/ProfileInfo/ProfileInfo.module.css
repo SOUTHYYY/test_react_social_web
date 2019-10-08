@@ -84,4 +84,16 @@
     color: #808080;
 }
 
+.currentStatus span{
+    font-size: 23px;
+    
+}
+
+.onStatusChange input{
+    height: 25px;
+    width: 30%;
+    border-radius: 5px;
+    border: 1px solid #000;
+    padding: 0 2px;
+}
 
