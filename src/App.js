@@ -7,6 +7,7 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import FindFriendsContainer from './components/FindFriends/FindFriendsContainer'
 import ScrollToTop from './components/Common/ScrollToTop/scrollToTop'
+import Login from './components/Login/Login';
 
 const App = (props) => {
 
@@ -19,7 +20,7 @@ const App = (props) => {
               <Route path='/dialogs' render={ () => <DialogsContainer />} />
               <Route path='/profile/:userId?' render={ () => <ProfileContainer />}/>
               <Route path='/find-friends' render={ () => <FindFriendsContainer />} />
-              <Route />
+              <Route path='/login' render={() => <Login />} />
               <Route />
               <Route />
             </ScrollToTop>
