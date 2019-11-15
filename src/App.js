@@ -8,10 +8,27 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import FindFriendsContainer from './components/FindFriends/FindFriendsContainer'
 import ScrollToTop from './components/Common/ScrollToTop/scrollToTop'
 import Login from './components/Login/Login';
+import VKPay from './components/VKPay/VKPay'
+import {Redirect} from 'react-router-dom'
+import {initializeApp} from './redux/app-reduser'
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router'
+import {compose} from 'redux'
+import Prealoader from './components/Common/Preloader/Preloader';
 
-const App = (props) => {
-
-  return (
+class App extends React.Component{
+  componentDidMount(){
+    this.props.initializeApp()
+  }
+  
+  render(){
+    if(!this.props.initialized){
+      return <div className='preloader'>
+        <Prealoader/>
+      </div> 
+    }
+    
+    return (
       <div className='app-wrapper'>
           <HeaderContainer />
           <Navbar />
@@ -21,12 +38,21 @@ const App = (props) => {
               <Route path='/profile/:userId?' render={ () => <ProfileContainer />}/>
               <Route path='/find-friends' render={ () => <FindFriendsContainer />} />
               <Route path='/login' render={() => <Login />} />
+              <Route path='/vkpay' render={() => <VKPay />} />
               <Route />
               <Route />
             </ScrollToTop>
           </div>
       </div>
-  )
+    )
+  } 
 }
 
-export default App;
+let mapStateToProps = (state) => ({
+  initialized: state.app.initialized
+})
+
+
+export default  compose(
+  withRouter,
+  (connect(mapStateToProps,{initializeApp})))(App);
