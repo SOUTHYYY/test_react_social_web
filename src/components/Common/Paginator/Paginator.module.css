@@ -1,0 +1,10 @@
+.pages {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px; 
+    margin-bottom: 5px;
+}
+
+.selectedPage {
+    font-weight: bold;
+}
