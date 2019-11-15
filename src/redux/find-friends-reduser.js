@@ -1,4 +1,5 @@
 import { UsersAPI } from '../API/api'
+import {updateObjectInArray} from '../components/Utils/object-helper'
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -13,7 +14,7 @@ const UPDATE_NEW_SEARCH_TEXT = 'UPDATE_NEW_SEARCH_TEXT'
 
 let initialState = {
     users: [],
-    pageSize: 100,
+    pageSize: 40,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
@@ -28,22 +29,12 @@ const findFriendsReduser = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return { ...user, followed: true }
-                    }
-                    return user
-                })
+                users: updateObjectInArray(state.users, action.userId, 'id',{followed: true})
             }
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return { ...user, followed: false }
-                    }
-                    return user
-                })
+                users: updateObjectInArray(state.users, action.userId, 'id' ,{followed: false})
             }
         case SET_USERS:
             return {
@@ -70,7 +61,7 @@ const findFriendsReduser = (state = initialState, action) => {
                 ...state,
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(id => id != action.userId)
+                    : state.followingInProgress.filter(id => id !== action.userId)
             }
         case FIND_FRIEND:
             return {
@@ -97,41 +88,32 @@ export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isF
 export const toggleFollowingProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId })
 export const findFriend = (currentSearchValue) => ({ type: FIND_FRIEND, currentSearchValue })
 export const updateNewSearchText = (newSearchText) => ({ type: UPDATE_NEW_SEARCH_TEXT, newSearchText })
-export const getUsers = (pageSize, currentPage) => {
-    return (dispatch) => {
-        dispatch(toggleIsFetching(true))
-        UsersAPI.getUsers(pageSize, currentPage).then(data => {
-            dispatch(toggleIsFetching(false))
-            dispatch(setUsers(data.items))
-            dispatch(setTotalUsersCount(data.totalCount))
-        })
-    }
+export const requestUsers = (pageSize, currentPage) => async (dispatch) => {
+    dispatch(toggleIsFetching(true))
+    dispatch(setCurrentPage(currentPage))
+    let data = await UsersAPI.getUsers(pageSize, currentPage)
+
+    dispatch(toggleIsFetching(false))
+    dispatch(setUsers(data.items))
+    dispatch(setTotalUsersCount(data.totalCount))
 }
 
-export const follow = (userId) => {
-    return (dispatch) => {
-        dispatch(toggleFollowingProgress(true, userId))
-        UsersAPI.followUser(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(followSuccess(userId))
-                }
-                dispatch(toggleFollowingProgress(false, userId))
-            })
+
+const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
+    dispatch(toggleFollowingProgress(true, userId))
+    let response = await apiMethod(userId)
+    if (response.resultCode === 0) {
+        dispatch(actionCreator(userId))
     }
+    dispatch(toggleFollowingProgress(false, userId))
 }
 
-export const unfollow = (userId) => {
-    return (dispatch) => {
-        dispatch(toggleFollowingProgress(true, userId))
-        UsersAPI.unfollowUser(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(unfollowSuccess(userId))
-                }
-                dispatch(toggleFollowingProgress(false, userId))
-            })
-    }
+export const follow = (userId) => async (dispatch) => {
+    followUnfollowFlow(dispatch, userId, UsersAPI.followUser.bind(UsersAPI), followSuccess)
+}
+
+export const unfollow = (userId) => async (dispatch) => {
+    followUnfollowFlow(dispatch, userId, UsersAPI.unfollowUser.bind(UsersAPI), unfollowSuccess)
 }
 
 export default findFriendsReduser
