@@ -1,0 +1,98 @@
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    color: #4a76a8;
+    font-weight: bold;
+}
+
+.dialog {
+    height: 50px;
+    display: flex;
+    transition: 0.3s;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.dialogUserImage{
+    display: flex;
+    align-items: center;
+}
+
+.dialogUserImage img{
+    border: 2px solid #4a76a8;
+    width: 35px;
+    height: 35px;
+}
+
+.dialogItemInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dialogItemInfo:last-child{
+    width: 100%;
+}
+
+.topInfo{
+}
+
+.lastMessage{
+    margin-top: 5px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    color: #656565;
+    font-weight: normal;
+}
+
+.lastMessage img {
+    border: 2px solid #fff;
+    width: 20px;
+    height: 20px;
+}
+
+.topInfo {
+    display: flex;
+    justify-content: space-between;
+}
+.topInfo .date {
+    font-weight: normal;
+}
+.dialog:hover {
+    background-color: #4a76a8;
+    color: #fff;
+}
+
+.dialog:hover .lastMessage{
+    color: #fff;
+}
+
+.dialog:hover img {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.dialog:hover a {
+    color: #fff
+}
+
+
+.dialog img {
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.dialog a {
+    text-decoration: none;
+    color: #4a76a8;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 100%;
+
+}

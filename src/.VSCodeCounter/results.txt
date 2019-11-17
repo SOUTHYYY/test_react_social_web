@@ -1,5 +1,5 @@
 Date : 2019-10-07 13:47:42
-Directory : /Users/leshka.l1337/Desktop/React/react_training/src/redux
+Directory : /Users/leshka.l1337/Desktop/React/react_training/src
 Total : 7 files,  340 codes, 27 comments, 48 blanks, all 415 lines
 
 Languages

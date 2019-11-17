@@ -1,6 +1,5 @@
-import React from 'react'
 import {compose} from 'redux'
-import { sendMessageActionCreator, updateNewMessageTextActionCreator } from '../../redux/dialogs-reduser';
+import { sendMessageActionCreator, fullMode, getCurrentUserId} from '../../redux/dialogs-reduser';
 import Dialogs from './Dialogs'
 import { connect } from 'react-redux';
 import { WithAuthRedirect } from '../HOC/WithAuthRedirect';
@@ -11,28 +10,21 @@ import { WithAuthRedirect } from '../HOC/WithAuthRedirect';
 let mapStateToProps = (state) => {
     return {
         messagesPage: state.messagesPage, 
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        isFullMode: state.messagesPage.isFullMode,
+        currentId: state.messagesPage.currentId
+        
     } 
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        sendMessage: () => {
-            dispatch( sendMessageActionCreator() )
-        },
-        updateNewMessageText:  (newText) => {
-            dispatch( updateNewMessageTextActionCreator(newText) )
-        }
-    }
-}
 compose(
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(mapStateToProps, {sendMessageActionCreator, fullMode, getCurrentUserId}),
     WithAuthRedirect
 )(Dialogs)
 
 // Create component w// HOC, which prevents unauthorized users from rendering the component
 let AuthRedirectComponent = WithAuthRedirect(Dialogs)
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent)
+const DialogsContainer = connect(mapStateToProps, {sendMessageActionCreator, fullMode,getCurrentUserId})(AuthRedirectComponent)
 
 export default DialogsContainer

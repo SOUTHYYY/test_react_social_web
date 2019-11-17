@@ -2,18 +2,20 @@ import React from 'react'
 import styles from './FindFriends.module.css'
 import userPhoto from '../../image/default_user.jpg'
 import { NavLink } from 'react-router-dom'
+import Paginator from '../Common/Paginator/Paginator'
 
 
 
+let FindFriends = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, followingInProgress, follow, unfollow}, ...props) => {
+    const FOLLOW = 'Подписаться'
+    const UNFOLLOW = 'Отписаться'
 
-let FindFriends = (props) => {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-    let pages = []
-
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
-    
+    // let unfollowFunc = (u) => {
+    //     unfollow(u.id)
+    // }
+    // let followFunc = (u) => {
+    //     follow(u.id)
+    // }    
     let newPostElement = React.createRef()
 
     let onFindSimilar = () => {
@@ -38,6 +40,7 @@ let FindFriends = (props) => {
         <div className={styles.wrapper}>
             <div className={styles.searchBox}>
                 <h1>Поиск новых друзей</h1>
+                <p>Ищите новых друзей здесь!</p>
                 <textarea
                     onChange={onNewSearchingTextChange}
                     className={styles.textArea}
@@ -48,22 +51,24 @@ let FindFriends = (props) => {
             </div>
             <div className={styles.container}>
                 {
-                    props.users.map(u => <div key={u.id}>
+                    users.map(u => <div key={u.id}>
                         <div className={styles.userCardWrapper}>
                             <div className={styles.userImageContainer}>
                                 <NavLink to={'/profile/' + u.id}>
                                     <img src={u.photos.small != null ? u.photos.small : userPhoto} alt="" className={styles.userImage} />
                                 </NavLink>
-                                <button disabled={props.followingInProgress.some(id => id === u.id)} className={styles.profileBackgroundButtonChange} >                                
+                                <button disabled={followingInProgress
+                                    .some(id => id === u.id)} 
+                                    className={styles.profileBackgroundButtonChange}>                             
                                     {
                                         u.followed
                                             ? <button  onClick={() => {
-                                                props.unfollow(u.id)
-                                            }}>Отписаться</button>
-                                            : <button disabled={props.followingInProgress.some(id => id === u.id)} 
+                                                unfollow(u.id)
+                                            }}>{UNFOLLOW}</button>
+                                            : <button disabled={followingInProgress.some(id => id === u.id)} 
                                                 onClick={() => {
-                                                props.follow(u.id)
-                                            }}>Подписаться</button>
+                                                follow(u.id)
+                                            }}>{FOLLOW}</button>
                                     }
                                 </button>
                             </div>
@@ -83,14 +88,8 @@ let FindFriends = (props) => {
                     )
                 }
             </div>
-            <div className={styles.pages}>
-
-                {pages.map(p => {
-                    debugger
-                    return <span className={props.currentPage === p && styles.selectedPage}
-                        onClick={(e) => { props.onPageChanged(p) }}>{p}</span>
-                })}
-            </div>
+            <Paginator currentPage={currentPage} onPageChanged={onPageChanged} 
+            totalUsersCount={totalUsersCount} pageSize={pageSize}/>
         </div>
     )
 }

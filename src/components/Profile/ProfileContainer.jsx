@@ -2,9 +2,11 @@ import React from 'react'
 import {compose} from 'redux'
 import Profile from "./Profile";
 import {connect} from 'react-redux'
-import {setUserProfile} from '../../redux/profile-reduser'
+import {getUserProfile, getUserStatus, updateUserStatus} from '../../redux/profile-reduser'
+import {requestUsers} from '../../redux/find-friends-reduser'
 import {withRouter} from 'react-router'
-import { WithAuthRedirect } from '../HOC/WithAuthRedirect';
+import Prealoader from '../Common/Preloader/Preloader';
+import styles from './Profile.module.css'
 
 
 class ProfileContainer extends React.Component {
@@ -12,24 +14,44 @@ class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId
         if(!userId) {
-            userId = 2
+            userId = this.props.authorizedUserId
+            if(!userId){
+                this.props.history.push('/login')
+            }
         }
-        this.props.setUserProfile(userId)
+        this.props.getUserProfile(userId)
+        this.props.getUserStatus(userId)
+        this.props.requestUsers(6, 14)
     }
 
     render() {
-
-        return <Profile {...this.props} profile={this.props.profile}/>
+        return <>
+            {this.props.isFetching ? 
+            <div className={styles.preloader}>
+                <h1>Загружаем</h1>
+                <Prealoader />
+            </div>
+            : <Profile {...this.props} users={this.props.users} profile={this.props.profile} status={this.props.status}
+            updateUserStatus={this.props.updateUserStatus} pageInfoBar={this.props.pageInfoBar}
+            handleIsFullInfoOpen={this.props.handleIsFullInfoOpen}/>}
+        </>
+        
     }
 }
 
 let mapStateToProps = (state) => ({
+    isFetching: state.profilePage.isFetching,
     profile: state.profilePage.profile,
+    pageInfoBar: state.profilePage.pageInfoBar,
+    status: state.profilePage.status,
+    authorizedUserId: state.auth.id,
+    isAuth: state.profilePage.isAuth,
+    users: state.findFriends.users,
 })
 
 export default compose(
-    connect(mapStateToProps, {setUserProfile,}),
-    WithAuthRedirect,
+    connect(mapStateToProps, {getUserProfile, getUserStatus, updateUserStatus, requestUsers}),
+    // WithAuthRedirect,
     withRouter,
 )(ProfileContainer)
 

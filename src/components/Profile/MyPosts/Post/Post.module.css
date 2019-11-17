@@ -1,28 +1,44 @@
-.item_wrapper {
-    width: 70%;
+.wrapper {
+    border: 2px solid #4a76a8;
+    margin-bottom: 15px;
+    border-radius: 10px; 
+    width: 500px;
     height: auto;
+    min-height: 130px;
+    background: #fff;  
+}
+
+.item_wrapper {
     color: #000;
-    background: #fff;
     font-size: 15px;
-    border: 2px solid rgb(201, 199, 199);
-    padding: 20px;
-    margin-bottom: 10px;
-    border-radius: 10px;
+    padding: 10px 20px;
 }
 
-.item_info {
+.item_info_container {
     display: flex;
-    align-items: center;
     padding-bottom: 10px;
+    position: relative; 
+}
+.item_info_container:last-child{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
-.item_info img {
+.item_info_container img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 20px;
 }
 
+
+.item_Info p:last-child{
+    font-size: 12px;
+    margin-top: 3px;
+    position: absolute;
+    bottom: 0;
+}
 .post {
     margin-bottom: 20px;
 }
@@ -34,4 +50,90 @@ hr{
 .likesCount{
     color: #000;
     margin-right: 10px;
+}
+
+.moreOption img{
+    width: 20px;
+    height: 20px;
+}
+
+.interactionItems{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #4a76a8;
+    font-weight: 600;
+}
+
+.like{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.like img {
+    width: 25px;
+    height: 22px;
+    margin-right: 5px;
+}
+.like p {
+    margin: 0;
+    color: #4a76a8;
+    font-weight: 600;
+}
+
+.comment{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.comment img {
+    width: 25px;
+    height: 22px;
+    margin-right: 5px;
+}
+.comment p {
+    margin: 0;
+}
+
+.share img {
+    width: 25px;
+    height: 22px;
+    margin-right: 5px;
+}
+
+.test {
+    border-top: 1px solid #4a76a8;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+}
+.test img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;  
+}
+
+.test textarea {
+    border: 1px solid #4a76a8;
+    border-radius: 7px;
+    width: 370px;
+    height: 30px;
+    resize: none;
+    font-size: 13px;
+    line-height: 15px;
+    padding: 7px 5px;
+}
+.sendButtonWrapper {
+    display: flex;
+    align-items: center;
+}
+.sendButtonWrapper img{
+    margin-left: 5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
 }

@@ -1,0 +1,38 @@
+.SendMessageForm{
+    background: #eee;
+    height: 60px;
+    display: flex;
+}
+.SendMessageForm form {
+    padding: 0 15px;
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.SendMessageForm img{ 
+    width: 30px;
+}
+.SendMessageForm input[type=text]{
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    flex: 1;
+    margin: 10px;
+    padding: 5px;
+}
+.SendMessageForm button{
+    border: 1px solid #fff; 
+    color: #fff;
+}
+
+.SendMessageForm button img {
+    width: 30px;
+}
+.SendMessageForm button {
+    padding: 0;
+    margin: 0;
+}

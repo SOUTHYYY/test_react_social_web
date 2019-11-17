@@ -2,6 +2,8 @@ import React from 'react'
 import styles from './Navbar.module.css'
 import { NavLink } from 'react-router-dom'
 import FriendsContainer from './Friends/FriendsContainer.jsx';
+import VKPayImage from '../../image/VKPay.svg'
+import FindFriendImage from '../../image/add-friend.svg'
 
 
 
@@ -10,6 +12,7 @@ import FriendsContainer from './Friends/FriendsContainer.jsx';
 
 const Navbar = (props) => {
   return (
+    <div className={styles.wrapperNav}>
       <nav className={styles.nav}>
         <div className={styles.item}>
           <NavLink to='/profile' activeClassName={styles.activeLink}>Профиль</NavLink>
@@ -28,12 +31,26 @@ const Navbar = (props) => {
         </div>
         <div className={styles.navbar_friends}>
           <h1>Друзья</h1>
-          <FriendsContainer /> 
+          <FriendsContainer />
         </div>
         <div className={styles.findFriendsButton}>
-          <NavLink to='/find-friends' activeClassName={styles.activeLink}>Найти друзей</NavLink>
+          <NavLink to='/find-friends' activeClassName={styles.activeLink}>
+          <img src={FindFriendImage} alt="Найти друзей"/>
+            Найти друзей</NavLink>
+        </div>
+        <div className={styles.VKPayWrapper} activeClassName={styles.activeLink}>
+          <NavLink to='/vkpay'>
+            <div className={styles.VKPay} activeClassName={styles.activeLink}>
+              <img src={VKPayImage} alt="VK Pay"/>
+              VK Pay
+            </div>
+          </NavLink>
+        </div>
+        <div className={styles.servises}>
+          <h1>Сервисы</h1>
         </div>
       </nav>
+    </div>
   );
 }
 export default Navbar

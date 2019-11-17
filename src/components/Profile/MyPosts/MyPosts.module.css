@@ -1,47 +1,39 @@
-.postsBlock {
-    margin-top: 5px;
-    padding: 10px;
-    /* background: #edeef0; */
-    background: #fff;
-    
-}
-
 .posts {
-    margin-top: 20px;
+    margin-top: 5px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;    
+}
+.posts h1{
+    color: #4a76a8;
 }
 
-.news_top_block_container{
+.addPostForm{
+    display: flex;
+}
+
+.handleSubmitForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.handleSubmitForm textarea{
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding-bottom: 75px;
-    
-}
-.wrapper_textArea{
-    /* background: #edeef0; */
-    background: #fff;
-}
-.textArea{
+    height: 30px;
+    width: 400px;
+    font-size: 15px;
+    resize: none;
     background-color: #fff;
     border-radius: 10px;
-    width: 400px;
-    height: 45px;
-    resize: none;
-    font-size: 20px;
-    line-height: 45px;
+    line-height: 30px;
     text-indent: 10px;
-    
-
 }
  /* Отключил подсвечивание у textarea */
-.textArea:active, :hover, :focus {
+.handleSubmitForm textarea:active, :hover, :focus {
     outline: 0;
     outline-offset: 0;
-}
-
-.news_top_block{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
 }

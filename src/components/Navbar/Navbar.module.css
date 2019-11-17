@@ -1,9 +1,14 @@
+.wrapperNav {
+  position: fixed;
+  top: 56px;
 
+}
 .nav {
   grid-area: n;
   background: #4a76a8;
   padding-top: 30px;
   padding-left: 30px;
+  width: 100%;
   min-height: 100vh;
 }
 
@@ -29,6 +34,15 @@
   font-size: 2em;
   margin-bottom: 10px;
 }
+
+.navbar_friends img {
+  width: 20px;
+  height: 20px;
+}
+.findFriendsButton{
+  display: flex;
+  align-items: center;
+}
 .findFriendsButton a{
   color: #fff;
   text-decoration: none;
@@ -36,6 +50,52 @@
   font-weight: normal;
 }
 
+.findFriendsButton img{
+  width: 20px;
+  height: 20px;
+  margin-right: 7px;
+}
+
 .findFriendsButton a.activeLink{
   color: gold;
+}
+
+.VKPayWrapper{
+  border: 1px solid #fff;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 50px;
+  padding:  10px 0px;
+  width: auto;
+  border-radius: 5px;
+}
+
+.VKPay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.VKPayWrapper a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.VKPayWrapper img {
+  width: 40px;
+  height: 40px;
+  padding-bottom: 5px;
+}
+
+.servises h1{
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: normal;
 }

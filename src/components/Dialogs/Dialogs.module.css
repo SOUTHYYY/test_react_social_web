@@ -1,71 +1,32 @@
 /* TODO: 
 * Сделать так, чтобы, сообщения позвались по разным частям экрана
 * Адаптивная верстка
-*Добавить стили на кнопку button
 */
 
 
 .dialogs{
-    border: 1px solid #000;
     display: flex;
-    justify-content: space-between;
-    margin: auto;
+    flex-direction: row;
+    /* justify-content: stretch; */
+    /* flex: 1; */
+    justify-content: center;
+    height: calc(100vh - 70px);
+    width: (100% - 10px);
+    background-color: #fff;
+    padding: 0 5px;
 }
 
-
-.dialogs .dialogs_item {
-    border: 3px solid #000;
-    width: 30%;
+.dialogs section:first-child {
+    margin-right: 10px;
+    width: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-.active {
-    color: gold;
+.dialogs section:last-child {
+    width: calc(100% - 300px);
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
-.messages {
-    border: 1px solid #000;
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
-
-.messagesHeader{
-    display: flex;
-    justify-content: space-between;
-    
-}
-
-.messagesHeaderPhotoItem{
-    justify-content: flex-end;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    padding: 10px;
-}
-
-
-.border {
-    border: 2px solid #000;
-}
-
-.messages .message {
-    font-size: 20px;
-    color: pink;
-}
-
-.sendMessages {
-    border: 1px solid #000;
-    position:  absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-}
-.sendMessages textarea {
-    width: 70%;
-}
-
-.messagesElements {
-    
-}

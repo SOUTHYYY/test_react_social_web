@@ -1,19 +1,16 @@
-/* .headerMain{
-  grid-area: h;
-  z-index: 0;
-} */
-.header {
+
+.headerWrapper {
   grid-area: h;
   background: #4a76a8;
-  /* position: fixed; */
+  position: fixed;
+  width: 100%;
   z-index: 9999;
+}
+.header{
   display: flex;
   justify-content: space-between;
 }
 
-.header--block {
-  position: fixed;
-}
 .header img {
   height: 100%;
   width: 100px;
@@ -22,7 +19,7 @@
 .loginBlock {
   color: aliceblue;
   text-decoration: none;
-  padding: 0 20px;
+  padding: 20px 20px;
   line-height: 100%;
   margin-right: 35px;
   display: flex;
@@ -36,7 +33,7 @@
 .loginBlock a {
   color: aliceblue;
   text-decoration: none;
-  padding: 0 20px;
+  margin: 0 20px;
   line-height: 100%;
   margin-right: 35px;
   display: flex;
@@ -44,8 +41,46 @@
   font-weight: 550;
   height: 100%;
 }
-.isEnter {
+
+.loginBlock img{
+  width: 10px;
+  height: 10px;
+  margin-left: 7px;
 }
 .isEnter:hover{
   background-color: #3a5d85;
 }
+
+.dropDownMenu ul {
+  padding: 0;
+  margin: 0;
+  margin-top: 22px;
+  right: 35px;
+  width: 128.02px;
+  position: absolute;
+  border: 1xp solid #fff;
+  border-radius: 3px;
+  text-transform: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #3a5d85;
+}
+
+.dropDownMenu li{
+  color: #fff;
+  list-style: none; 
+}
+
+.dropDownMenu li a{
+  padding: 7px;
+  display: flex;
+}
+
+.dropDownMenu li:hover{
+}
+
+
+
+
