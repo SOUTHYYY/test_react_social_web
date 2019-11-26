@@ -1,5 +1,4 @@
 import { OnSetAuthUserData } from './auth-reduser'
-import { async } from 'q'
 
 const INITIALIZED_SUCCES = 'INITIALIZED_SUCCES'
 
@@ -19,18 +18,9 @@ const appReduser = (state = initialState, action) => {
     }
 
 }
-
-
 export const initializedSucces = () => ({ type: INITIALIZED_SUCCES })
-// export const initializeApp = () => async dispatch => {
-//     let promise = dispatch(OnSetAuthUserData())
-//     promise.then(() => {
-//         dispatch(initializedSucces())
-//     })
-// }
-
 export const initializeApp = () => async dispatch => {
-    let promise = await dispatch(OnSetAuthUserData())
+    await dispatch(OnSetAuthUserData())
     
     dispatch(initializedSucces())
 }

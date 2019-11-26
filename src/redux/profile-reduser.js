@@ -1,5 +1,4 @@
 import { ProfileAPI } from '../API/api'
-import { async } from 'q'
 
 const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'

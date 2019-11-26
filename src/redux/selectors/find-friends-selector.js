@@ -1,4 +1,4 @@
-import {createSelector} from 'reselect' // Для сложных селекторов
+// import {createSelector} from 'reselect' // Для сложных селекторов
 
 export const getUsers = (state) => {
     return state.findFriends.users

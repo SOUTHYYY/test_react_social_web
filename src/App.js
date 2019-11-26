@@ -9,7 +9,6 @@ import FindFriendsContainer from './components/FindFriends/FindFriendsContainer'
 import ScrollToTop from './components/Common/ScrollToTop/scrollToTop'
 import Login from './components/Login/Login';
 import VKPay from './components/VKPay/VKPay'
-import {Redirect} from 'react-router-dom'
 import {initializeApp} from './redux/app-reduser'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
