@@ -2,12 +2,12 @@ import React from 'react'
 import styles from './MessagesContainer.module.css'
 import MessageItem from './MessageItem/MessageItem'
 
-const MessagesContainer = (props) => {
+const MessagesContainer = ({users, currentId }) => {
     const chooseDialog = 'Выберете диалог'
     const newDialog = 'У вас еще нету диалога, не стесняйтесь!'
 
-    let currentUserIdMessagesElem = props.users.map(dialog => {
-        if (dialog.id === props.currentId) {
+    let currentUserIdMessagesElem = users.map(dialog => {
+        if (dialog.id === currentId) {
             if (dialog.messages.length === 0) {
                 return <div className={styles.unkownDialog}>{newDialog}</div>
             } else {
@@ -22,7 +22,7 @@ const MessagesContainer = (props) => {
 
     return (
         <section className={styles.messageContainer}>
-            {props.currentId === null ? <div className={styles.unkownDialog}>{chooseDialog}</div>
+            {currentId === null ? <div className={styles.unkownDialog}>{chooseDialog}</div>
             : currentUserIdMessagesElem}
         </section>
     )

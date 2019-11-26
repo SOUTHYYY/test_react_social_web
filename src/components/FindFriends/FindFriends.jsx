@@ -6,22 +6,16 @@ import Paginator from '../Common/Paginator/Paginator'
 
 
 
-let FindFriends = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, followingInProgress, follow, unfollow}, ...props) => {
+let FindFriends = ({currentPage, onPageChanged, totalUsersCount, pageSize, newSearchText, users, followingInProgress, follow, unfollow, updateNewSearchText}, ...props) => {
     const FOLLOW = 'Подписаться'
     const UNFOLLOW = 'Отписаться'
 
-    // let unfollowFunc = (u) => {
-    //     unfollow(u.id)
-    // }
-    // let followFunc = (u) => {
-    //     follow(u.id)
-    // }    
     let newPostElement = React.createRef()
 
     let onFindSimilar = () => {
         let text = newPostElement.current.value
         let matchingResults = []
-        for(let i in props.users.name ){
+        for(let i in users.name ){
             if(i === text) {
                 matchingResults.push(i)
             }
@@ -31,7 +25,7 @@ let FindFriends = ({currentPage, onPageChanged, totalUsersCount, pageSize, users
 
     let onNewSearchingTextChange = () => {
         let newSearchText = newPostElement.current.value
-        props.updateNewSearchText(newSearchText)
+        updateNewSearchText(newSearchText)
         // TODO: Появляется ошибка, того, что updateNewSearchText - не является функцией
     }
  
@@ -45,7 +39,7 @@ let FindFriends = ({currentPage, onPageChanged, totalUsersCount, pageSize, users
                     onChange={onNewSearchingTextChange}
                     className={styles.textArea}
                     ref={newPostElement}
-                    value={props.newSearchText}
+                    value={newSearchText}
                 ></textarea>
                 <button onClick={onFindSimilar}>Найти друга</button>
             </div>

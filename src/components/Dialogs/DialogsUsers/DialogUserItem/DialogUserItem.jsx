@@ -5,22 +5,22 @@ import userPhoto from '../../../../image/img1.jpg'
 
 
 
-const DialogUserItem = (props) => {
+const DialogUserItem = ({id, getCurrentUserId, image, name}) => {
 
-    let path = '/dialogs/' + props.id;
+    let path = '/dialogs/' + id;
 
     let handleGetUserId = () => {
-        props.getCurrentUserId(props.id)
+        getCurrentUserId(id)
     }
     return (
         <NavLink to={path}>
             <div className={styles.dialog + " " + styles.active} onClick={handleGetUserId}>
                 <div className={styles.dialogUserImage}>
-                    <img src={props.image} alt=""></img>
+                    <img src={image} alt=""></img>
                 </div>
                 <div className={styles.dialogItemInfo}>
                     <div className={styles.topInfo}>
-                        {props.name}
+                        {name}
                         <div className={styles.date}>
                             <span>11:50</span>
                         </div>

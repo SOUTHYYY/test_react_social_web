@@ -4,13 +4,13 @@ import ChatFieldHeader from './ChatFieldHeader/ChatFieldHeader'
 import MessagesContainer from './MessagesContainer/MessagesContainer'
 import SendMessageForm from './SendMessageForm/SendMessageForm'
 
-const ChatField = (props) => {
+const ChatField = ({isFullMode, fullMode, currentId, sendMessage, users}) => {
 
     return (
         <section clasName={styles.ChatField}>
-            <ChatFieldHeader isFullMode={props.isFullMode} fullMode={props.fullMode} currentId={props.currentId}/>
-            <MessagesContainer users={props.users} currentId={props.currentId}/>
-            <SendMessageForm sendMessage={props.sendMessage}/>
+            <ChatFieldHeader isFullMode={isFullMode} fullMode={fullMode} currentId={currentId}/>
+            <MessagesContainer users={users} currentId={currentId}/>
+            <SendMessageForm sendMessage={sendMessage}/>
         </section>
     )
 }

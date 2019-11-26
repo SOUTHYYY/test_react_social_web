@@ -7,9 +7,9 @@ import { Textarea } from '../../Common/FormsControl/FormsControl'
 
 const maxLength500 = maxLengthCreator(500)
 
-const AddPostForm = (props) => {
+const AddPostForm = ({handleSubmit}) => {
     return (
-        <form className={styles.handleSubmitForm} onSubmit={props.handleSubmit}>
+        <form className={styles.handleSubmitForm} onSubmit={handleSubmit}>
             <Field className={styles.textArea}
                 name={'newPostTextBody'}
                 component={Textarea}

@@ -14,11 +14,14 @@ let lengthName = (name) => {
     }
 }
 
-const FriendItem = (props) => {
+const FriendItem = ({photo, name}) => {
     return(
         <div className={styles.friendItem}>
-            <img src={props.photo != null ? props.photo : defaultUserPhoto} alt="Фото друга"/>
-            {lengthName(props.name)}
+            {photo != null ? 
+            <img src={photo} alt='фото друга'></img>:
+            <img src={defaultUserPhoto} alt='фото друга'></img>
+            }
+            {lengthName(name)}
         </div>
     )
 }

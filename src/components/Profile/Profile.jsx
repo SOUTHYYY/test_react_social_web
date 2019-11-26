@@ -3,12 +3,12 @@ import styles from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 // import MyPostsContainer from './MyPosts/MyPostsContainer';
 
-const Profile = (props) => {
+const Profile = ({users, profile, status, updateUserStatus, pageInfoBar, handleIsFullInfoOpen}) => {
     return(
       <div className={styles.profile}>
-        <ProfileInfo users={props.users} profile={props.profile} status={props.status} 
-        updateUserStatus={props.updateUserStatus} pageInfoBar={props.pageInfoBar}
-        handleIsFullInfoOpen={props.handleIsFullInfoOpen}/>
+        <ProfileInfo users={users} profile={profile} status={status} 
+        updateUserStatus={updateUserStatus} pageInfoBar={pageInfoBar}
+        handleIsFullInfoOpen={handleIsFullInfoOpen}/>
       </div>
     )
 }

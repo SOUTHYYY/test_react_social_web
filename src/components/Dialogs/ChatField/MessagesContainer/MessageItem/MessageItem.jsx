@@ -4,14 +4,13 @@ import userPhoto from '../../../../../image/img1.jpg'
 
 
 
-const MessageItem = (props) => {
-    debugger
+const MessageItem = ({message}) => {
     return(
         <div className={styles.message}>
             <img src={userPhoto} alt="ваш друг"/>
             <div className={styles.message_body}>
                 <p>Лаптырев Алексей</p>
-                <p>{props.message}</p>
+                <p>{message}</p>
             </div>
         </div>
     )

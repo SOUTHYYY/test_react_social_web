@@ -3,9 +3,10 @@ import styles from './Friends.module.css'
 import FriendItem from './FriendItem/FriendItem';
 
 
-const Friends = (props) => {
+const Friends = ({mostPopularFriends}) => {
     let popularFriendsElements = 
-        props.mostPopularFriends.map( data => <FriendItem name={data.name} id={data.id} image={data.image} key={data.id} /> );
+            mostPopularFriends.map( data => 
+                <FriendItem name={data.name} id={data.id} image={data.image} key={data.id} /> );
     
     return(
         <div className={styles.popular_friends}>

@@ -1,20 +1,20 @@
 import React from 'react'
 import styles from './Dialogs.module.css'
-import { required, maxLengthCreator } from '../Utils/Validators/validator'
 import ChatField from './ChatField/ChatField'
 import DialogsUsers from './DialogsUsers/DialogsUsers'
 
 
-const Dialogs = (props) => {
-    debugger
-    return <section className={styles.dialogs}>
-        <DialogsUsers users={props.messagesPage.dialogs} getCurrentUserId={props.getCurrentUserId} isFullMode={props.isFullMode}/>
-        <ChatField users={props.messagesPage.dialogs} 
-        sendMessage={props.sendMessageActionCreator}
-        isFullMode={props.isFullMode}
-        fullMode={props.fullMode}
-        currentId={props.currentId}/>
-    </section>
+const Dialogs = ({messagesPage, sendMessageActionCreator, isFullMode,
+    fullMode, currentId, getCurrentUserId}) => {
+    return (
+        <section className={styles.dialogs}>
+            <DialogsUsers users={messagesPage.dialogs} getCurrentUserId={getCurrentUserId}/>
+            <ChatField users={messagesPage.dialogs}
+                sendMessage={sendMessageActionCreator}
+                isFullMode={isFullMode}
+                fullMode={fullMode}
+                currentId={currentId} />
+        </section>)
 }
 
 export default Dialogs

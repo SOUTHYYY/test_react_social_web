@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import styles from './ProfileInfo.module.css'
-import MoodPhoto from '../MoodPhoto/MoodPhoto';
-import Prealoader from '../../Common/Preloader/Preloader';
 import defaultUserPhoto from '../../../image/img1.jpg'
 import ProfileStatus from './ProfileStatus'
 import PageInfoBar from './PageInfoBar'
@@ -11,21 +9,21 @@ import presentPhoto from '../../../image/present.png'
 import moreOptions from '../../../image/more-options.svg'
 import MyPostsContainer from '../MyPosts/MyPostsContainer';
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({profile, users, pageInfoBar, updateUserStatus, status}) => {
 
     const [isFullInfoOpen, setIsFullInfoOpen] = useState(false)
 
-    if (!props.profile) {
+    if (!profile) {
         return null
     }
-    let pageInfoBarItems = props.pageInfoBar.map(e =>
+    let pageInfoBarItems = pageInfoBar.map(e =>
         <PageInfoBar
             name={e.name}
             count={e.count}
             id={e.id} />
     )
 
-    let allFriends = props.users.map(user =>
+    let allFriends = users.map(user =>
         <FriendItem
             name={user.name}
             photo={user.photos.small}
@@ -34,17 +32,18 @@ const ProfileInfo = (props) => {
 
     return (
         <div className={styles.profileWrapper}>
-            {/* <MoodPhoto /> */}
             <div className={styles.descriptionBlock}>
                 <div className={styles.leftBlock}>
                     <div className={styles.profileAllMainWrapper}>
-                        <img className={styles.profilePhoto} 
-                        src={props.profile.photos.large != null ? props.profile.photos.large : defaultUserPhoto} 
-                        alt="photo" />
+                        {profile.photos.large !== null ?
+                            <img src={profile.photos.large} alt='user'></img>
+                            :
+                            <img src={defaultUserPhoto} alt='user'></img>
+                        }
                         <div className={styles.imageNavBlock}>
                             <button>Изменить</button>
                             <button>
-                                <img src={moreOptions} alt=""/>
+                                <img src={moreOptions} alt="" />
                             </button>
                         </div>
                     </div>
@@ -78,10 +77,10 @@ const ProfileInfo = (props) => {
                 <div className={styles.rightBlock}>
                     <div className={styles.infoBLock}>
                         <div className={styles.mainInfo}>
-                            <h1>{props.profile.fullName}</h1>
-                            <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus} />
+                            <h1>{profile.fullName}</h1>
+                            <ProfileStatus status={status} updateUserStatus={updateUserStatus} />
                             <div className={styles.statusInfo}>
-                                <span>{props.profile.statusInfo}</span>
+                                <span>{profile.statusInfo}</span>
                             </div>
                             <hr />
                         </div>
@@ -117,18 +116,19 @@ const ProfileInfo = (props) => {
                             </div>
                             <div className={styles.photos}>
                                 <div className={styles.photosItem}>
-                                    <img src="https://sun9-3.userapi.com/c855024/v855024603/ac9db/KIA7HxHbEo4.jpg" alt="1"/>
+                                    <img src="https://sun9-3.userapi.com/c855024/v855024603/ac9db/KIA7HxHbEo4.jpg" alt="1" />
                                 </div>
                                 <div className={styles.photosItem}>
-                                    <img src="https://sun9-51.userapi.com/c857428/v857428348/21cbd/6qXFDKaaZo0.jpg" alt="2"/>
+                                    <img src="https://sun9-51.userapi.com/c857428/v857428348/21cbd/6qXFDKaaZo0.jpg" alt="2" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <MyPostsContainer /> 
+                    <MyPostsContainer />
                 </div>
             </div>
         </div>
+
     )
 }
 

@@ -10,7 +10,7 @@ import FindFriendImage from '../../image/add-friend.svg'
 // {`${styles.nav} ${styles.item}`} - Применение 2х и более классов в className
 
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <div className={styles.wrapperNav}>
       <nav className={styles.nav}>

@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from './ProfileInfo.module.css'
 
-const PageInfoBar = (props) => {
+const PageInfoBar = ({count, name}) => {
     return(
         <div className={styles.pageInfoBarItem}>
-            <span>{props.count}</span>
-            <span>{props.name}</span>
+            <span>{count}</span>
+            <span>{name}</span>
         </div>
     )
 }

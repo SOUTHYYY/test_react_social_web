@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './MoodPhoto.module.css'
 
 
-const MoodPhoto = (state) => {
+const MoodPhoto = (props) => {
 
     return(
         <div className={styles.imgWrapper}>

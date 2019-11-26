@@ -7,7 +7,6 @@ import { required, maxLengthCreator } from '../Utils/Validators/validator'
 import { connect } from 'react-redux'
 import { login } from '../../redux/auth-reduser'
 import { Redirect } from 'react-router-dom'
-import error from '../Common/FormsControl/FormsControl.module.css'
 
 const maxLength30 = maxLengthCreator(30)
 
@@ -15,8 +14,8 @@ const LoginForm = ({ handleSubmit, onSubmit, error }) => {
     return (
         <form onSubmit={handleSubmit} >
 
-            {createField('Email', 'email', [required], Input)}
-            {createField('Password', 'password', [required], Input)}
+            {createField('Email', 'email', [required, maxLength30], Input)}
+            {createField('Password', 'password', [required, maxLength30], Input)}
             <div>
                 <Field component={'input'} name={'rememberMe'} type={"checkbox"} />Запомнить меня
             </div>
@@ -35,12 +34,12 @@ const LoginForm = ({ handleSubmit, onSubmit, error }) => {
 
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 
-const Login = (props) => {
+const Login = ({login, isAuth}) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        login(formData.email, formData.password, formData.rememberMe)
     }
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Redirect to={'/profile'} />
     }
 
