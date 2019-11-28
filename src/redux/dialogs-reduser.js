@@ -56,7 +56,6 @@ const dialogsReduser = (state = initialState, action) => {
                 })
             }
         case FULL_MODE:
-            debugger
             return {
                 ...state,
                 isFullMode: action.value === true ? true : false

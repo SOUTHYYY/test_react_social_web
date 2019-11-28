@@ -20,6 +20,7 @@ const ProfileInfo = ({profile, users, pageInfoBar, updateUserStatus, status}) =>
         <PageInfoBar
             name={e.name}
             count={e.count}
+            key={e.id}
             id={e.id} />
     )
 

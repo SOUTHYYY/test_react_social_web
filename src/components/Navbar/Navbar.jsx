@@ -35,13 +35,14 @@ const Navbar = () => {
         </div>
         <div className={styles.findFriendsButton}>
           <NavLink to='/find-friends' activeClassName={styles.activeLink}>
-          <img src={FindFriendImage} alt="Найти друзей"/>
-            Найти друзей</NavLink>
+            <img src={FindFriendImage} alt="Найти друзей" />
+            Найти друзей
+          </NavLink>
         </div>
-        <div className={styles.VKPayWrapper} activeClassName={styles.activeLink}>
-          <NavLink to='/vkpay'>
-            <div className={styles.VKPay} activeClassName={styles.activeLink}>
-              <img src={VKPayImage} alt="VK Pay"/>
+        <div className={styles.VKPayWrapper}>
+          <NavLink to='/vkpay' activeClassName={styles.activeLink}>
+            <div className={styles.VKPay}>
+              <img src={VKPayImage} alt="VK Pay" />
               VK Pay
             </div>
           </NavLink>
