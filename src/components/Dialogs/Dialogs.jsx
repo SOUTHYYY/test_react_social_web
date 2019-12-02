@@ -8,8 +8,12 @@ const Dialogs = ({messagesPage, sendMessageActionCreator, isFullMode,
     fullMode, currentId, getCurrentUserId}) => {
     return (
         <section className={styles.dialogs}>
-            <DialogsUsers users={messagesPage.dialogs} getCurrentUserId={getCurrentUserId}/>
-            <ChatField users={messagesPage.dialogs}
+            <DialogsUsers 
+                users={messagesPage.dialogs}
+                getCurrentUserId={getCurrentUserId}
+                isFullMode={isFullMode}/>
+            <ChatField  
+                users={messagesPage.dialogs}
                 sendMessage={sendMessageActionCreator}
                 isFullMode={isFullMode}
                 fullMode={fullMode}
