@@ -6,10 +6,11 @@ import Navbar from './components/Navbar/Navbar';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import FindFriendsContainer from './components/FindFriends/FindFriendsContainer'
+import Settings from './components/Settings/Settings'
 import ScrollToTop from './components/Common/ScrollToTop/scrollToTop'
 import Login from './components/Login/Login';
 import VKPay from './components/VKPay/VKPay'
-import {initializeApp} from './redux/app-reduser'
+import {initializeApp} from './redux/app-redux/app-reducer'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 import {compose} from 'redux'
@@ -35,10 +36,10 @@ class App extends React.Component{
             <ScrollToTop >
               <Route path='/dialogs' render={ () => <DialogsContainer />} />
               <Route path='/profile/:userId?' render={ () => <ProfileContainer />}/>
+              <Route path='/settings' render={ () => <Settings />}/>
               <Route path='/find-friends' render={ () => <FindFriendsContainer />} />
               <Route path='/login' render={() => <Login />} />
               <Route path='/vkpay' render={() => <VKPay />} />
-              <Route />
               <Route />
             </ScrollToTop>
           </div>

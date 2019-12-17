@@ -4,7 +4,7 @@ import {
     follow, unfollow, setCurrentPage,
     toggleFollowingProgress, requestUsers, findFriend,
     updateNewSearchText, followSuccess, unfollowSuccess,
-} from '../../redux/find-friends-reduser'
+} from '../../redux/find-friends-redux/find-friends-reducer'
 import {
     getUsers, getPageSize, getTotalUsersCount,
     getCurrentPage, getIsFetching, getIsFollowingInProgress,

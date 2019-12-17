@@ -1,4 +1,4 @@
-import { addPost, likeIt, dontLikeIt, setCommentMode, addComment, updateCommentText} from '../../../redux/profile-reduser';
+import { addPost, likeIt, dontLikeIt, setCommentMode, addComment, updateCommentText} from '../../../redux/profile-redux/profile-reducer';
 import MyPosts from './MyPosts';
 import { connect } from 'react-redux';
 

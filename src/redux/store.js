@@ -1,6 +1,6 @@
-import profileReduser from "./profile-reduser";
-import dialogsReduser from "./dialogs-reduser";
-import navbarReduser from "./navbar-reduser";
+import profileReduser from "./profile-reducer";
+import dialogsReduser from "./dialogs-redux/dialogs-reducer";
+import navbarReduser from "./navbar-redux/navbar-reducer";
 
 let store = {
     _state: {
@@ -46,35 +46,6 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer // наблюдатель (observer) // publisher-subscriber
     },
-
-
-    // _addPost() {
-    //     let newPost = {
-    //         id: this._state.profilePage.posts.length + 1,
-    //         message: this._state.profilePage.newPostText,
-    //         likesCount: 0
-    //     }
-    //     this._state.profilePage.posts.unshift(newPost)
-    //     this._state.profilePage.newPostText = ''
-    //     this._callSubscriber(this._state)
-    // },
-    // _updateNewPostText(newText) {
-    //     this._state.profilePage.newPostText = newText
-    //     this._callSubscriber(this._state)
-    // },
-    // _updateNewMessageText(newText) {
-    //     this._state.messagesPage.newMessageText = newText
-    //     this._callSubscriber(this._state)
-    // },
-    // _sendMessage(){
-    //     let newMessage = {
-    //         id: this._state.messagesPage.messages.length + 1,
-    //         message: this._state.messagesPage.newMessageText
-    //     }
-    //     this._state.messagesPage.messages.push(newMessage)
-    //     this._state.messagesPage.newMessageText = ''
-    //     this._callSubscriber(this._state)
-    // },
 
 
     dispatch(action) {

@@ -1,4 +1,4 @@
-import profileReduser, {addPost} from '../profile-reduser'
+import profileReduser, {addPost} from '../profile-reducer'
 
 
 // How to write redusers-tests?

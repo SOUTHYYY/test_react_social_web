@@ -1,6 +1,5 @@
-import { OnSetAuthUserData } from './auth-reduser'
-
-const INITIALIZED_SUCCES = 'INITIALIZED_SUCCES'
+import { OnSetAuthUserData } from '../auth-redux/auth-reducer'
+import {INITIALIZED_SUCCES} from './app-consts'
 
 let initialState = {
     initialized: false

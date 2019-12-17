@@ -5,7 +5,7 @@ import userPhoto from '../../../../image/img1.jpg'
 
 
 
-const DialogUserItem = ({id, getCurrentUserId, image, name}) => {
+const DialogUserItem = ({ id, getCurrentUserId, image, name, lastMessage }) => {
 
     let path = '/dialogs/' + id;
 
@@ -25,11 +25,12 @@ const DialogUserItem = ({id, getCurrentUserId, image, name}) => {
                             <span>11:50</span>
                         </div>
                     </div>
-                    <div className={styles.lastMessage}>
-                        <img src={userPhoto} alt=""/>
-                        Все парни козлы
-                    </div>
-                </div>               
+                    {lastMessage === undefined ? null :
+                        <div className={styles.lastMessage}>
+                            <img src={userPhoto} alt="hello" />
+                            {lastMessage.message}
+                        </div>}
+                </div>
             </div>
         </NavLink>
     )

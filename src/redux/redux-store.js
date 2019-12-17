@@ -1,10 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import profileReduser from './profile-reduser'
-import dialogsReduser from './dialogs-reduser'
-import navbarReduser from './navbar-reduser'
-import findFriendsReduser from "./find-friends-reduser";
-import appReduser from './app-reduser'
-import authReduser from "./auth-reduser";
+import profileReduser from './profile-redux/profile-reducer'
+import dialogsReduser from './dialogs-redux/dialogs-reducer'
+import navbarReduser from './navbar-redux/navbar-reducer'
+import findFriendsReduser from "./find-friends-redux/find-friends-reducer";
+import appReduser from './app-redux/app-reducer'
+import authReduser from "./auth-redux/auth-reducer";
 import thunkMiddleeware from 'redux-thunk'
 import {reducer as formReducer} from 'redux-form'
 

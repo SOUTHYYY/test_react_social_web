@@ -1,14 +1,15 @@
-import { ProfileAPI } from '../API/api'
+import { ProfileAPI } from '../../API/api'
+import {ADD_POST,
+        ADD_COMMENT,
+        SET_USER_STATUS,
+        TOGGLE_IS_FETCHING,
+        LIKE_IT,
+        DONT_LIKE_IT,
+        SET_COMMENT_MODE,
+        UPDATE_COMMENT_TEXT,
+        SET_USER_PROFILE
+} from './profile-consts'
 
-const ADD_POST = 'ADD-POST'
-const SET_USER_PROFILE = 'SET_USER_PROFILE'
-const SET_USER_STATUS = 'SET_USER_STATUS'
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
-const LIKE_IT = 'LIKE_IT'
-const DONT_LIKE_IT = 'DONT_LIKE_IT'
-const SET_COMMENT_MODE = 'SET_COMMENT_MODE'
-const UPDATE_COMMENT_TEXT = 'UPDATE_COMMENT_TEXT'
-const ADD_COMMENT = 'ADD_COMMENT'
 
 let initialState = {
     posts: [
@@ -31,9 +32,50 @@ let initialState = {
     commentText: ''
 }
 
-const profileReduser = (state = initialState, action) => {
-    switch (action.type) {
-        case ADD_POST: {
+const onAddPost = (arr, text) => {
+    let newArray = [...arr]
+    const months = {
+        0: 'янв',
+        1: 'фев',
+        2: 'мар',
+        3: 'апр',
+        4: 'мая',
+        5: 'июн',
+        6: 'июл',
+        7: 'авг',
+        8: 'сен',
+        9: 'окт',
+        10: 'ноя',
+        11: 'дек'
+    }
+    let date = new Date()
+    const days = date.getDate()
+    const mouthIndex = date.getMonth()
+    const monthName = months[mouthIndex]
+    const hours = date.getHours()
+    let minutes = date.getMinutes()
+    if (minutes < 10) {
+        minutes = '0' + minutes
+    }
+    let currentDate = `${days} ${monthName} в ${hours}:${minutes}`
+    let newPost = {
+        id: newArray.length + 1,
+        date: currentDate,
+        message: text,
+        likesCount: 0,
+        commentMode: false,
+        comments: [],
+        isYouLike: false
+    }
+    newArray = [newPost, ...newArray]
+    return newArray
+}
+
+const onAddComment = (arr, text, postId) => {
+    const newArr = [...arr]
+    newArr.map(post => {
+        if (post.id === postId) {
+            debugger
             const months = {
                 0: 'янв',
                 1: 'фев',
@@ -58,20 +100,30 @@ const profileReduser = (state = initialState, action) => {
                 minutes = '0' + minutes
             }
             let currentDate = `${days} ${monthName} в ${hours}:${minutes}`
-            let newPost = {
-                id: state.posts.length + 1,
+            let newComment = {
+                id: post.comments.length === 0 ? 1 : post.comments.lenght + 1,
                 date: currentDate,
-                message: action.newPostText,
-                likesCount: 1,
-                commentMode: false,
-                comments: [],
-                isYouLike: false
+                message: text,
+                likesCount: 0,
+                isYouLike: false,
             }
             return {
-                ...state,
-                posts: [newPost, ...state.posts],
+                ...post,
+                comments: [...post.comments, newComment]
             }
         }
+        return newArr
+    })
+}
+
+
+const profileReduser = (state = initialState, action) => {
+    switch (action.type) {
+        case ADD_POST:
+            return {
+                ...state,
+                posts: onAddPost(state.posts, action.newPostText)
+            }
         case SET_USER_PROFILE:
             return {
                 ...state,
@@ -127,47 +179,7 @@ const profileReduser = (state = initialState, action) => {
         case ADD_COMMENT:
             return {
                 ...state,
-                posts: state.posts.map(post => {
-                    if (post.id === action.postId) {
-                        const months = {
-                            0: 'янв',
-                            1: 'фев',
-                            2: 'мар',
-                            3: 'апр',
-                            4: 'мая',
-                            5: 'июн',
-                            6: 'июл',
-                            7: 'авг',
-                            8: 'сен',
-                            9: 'окт',
-                            10: 'ноя',
-                            11: 'дек'
-                        }
-                        let date = new Date()
-                        const days = date.getDate()
-                        const mouthIndex = date.getMonth()
-                        const monthName = months[mouthIndex]
-                        const hours = date.getHours()
-                        let minutes = date.getMinutes()
-                        if (minutes < 10) {
-                            minutes = '0' + minutes
-                        }
-                        let currentDate = `${days} ${monthName} в ${hours}:${minutes}`
-                        let newComment = {
-                            id: post.comments.length === 0 ? 1 : post.comments.lenght + 1,
-                            date: currentDate,
-                            message: state.commentText,
-                            likesCount: 0,
-                            isYouLike: false,
-                        }
-                        return {
-                            ...post,
-                            comments: [...post.comments, newComment]
-                        }
-                    }
-                    return post
-                }
-                ),
+                posts: onAddComment(state.posts, action.commentText, action.postId)
             }
         default:
             return state

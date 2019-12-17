@@ -27,7 +27,7 @@ const Navbar = () => {
           <a href='/music'>Музыка</a>
         </div>
         <div className={styles.item}>
-          <a href='/settings'>Настройки</a>
+          <NavLink to='/settings' activeClassName={styles.activeLink}>Насройки</NavLink>
         </div>
         <div className={styles.navbar_friends}>
           <h1>Друзья</h1>

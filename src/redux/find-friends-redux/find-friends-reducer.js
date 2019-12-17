@@ -1,15 +1,14 @@
-import { UsersAPI } from '../API/api'
-import {updateObjectInArray} from '../components/Utils/object-helper'
-
-const FOLLOW = 'FOLLOW'
-const UNFOLLOW = 'UNFOLLOW'
-const SET_USERS = 'SET_USERS'
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
-const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
-const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
-const FIND_FRIEND = 'FIND_FRIEND'
-const UPDATE_NEW_SEARCH_TEXT = 'UPDATE_NEW_SEARCH_TEXT'
+import { UsersAPI } from '../../API/api'
+import {updateObjectInArray} from '../../components/Utils/object-helper'
+import {FOLLOW,
+        UNFOLLOW,
+        SET_USERS,
+        SET_CURRENT_PAGE,
+        SET_TOTAL_USERS_COUNT,
+        TOGGLE_IS_FETCHING,
+        TOGGLE_IS_FOLLOWING_PROGRESS,
+        FIND_FRIEND,
+        UPDATE_NEW_SEARCH_TEXT} from './find-reiends-consts'
 
 
 let initialState = {

@@ -8,8 +8,12 @@ import FriendItem from './FriendItem.jsx'
 import presentPhoto from '../../../image/present.png'
 import moreOptions from '../../../image/more-options.svg'
 import MyPostsContainer from '../MyPosts/MyPostsContainer';
+import {customAPI} from '../../../API/api'
 
 const ProfileInfo = ({profile, users, pageInfoBar, updateUserStatus, status}) => {
+
+    const myLocalData = customAPI.getCustomUsers()
+    console.log('myLocalData is: ', myLocalData)
 
     const [isFullInfoOpen, setIsFullInfoOpen] = useState(false)
 

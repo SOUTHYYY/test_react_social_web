@@ -1,6 +1,9 @@
-const SEND_MESSAGE = 'SEND-MESSAGE'
-const FULL_MODE = 'FULL_MODE'
-const GET_CURRENT_USER_ID = 'GET_CURRENT_USER_ID'
+import {SEND_MESSAGE,
+        FULL_MODE,
+        GET_CURRENT_USER_ID,
+        INITIAL_FILTERED_DIALOGS,
+        ON_SEARCH_CHANGE} from './dialogs-consts'
+
 
 let initialState = {
     dialogs: [
@@ -32,7 +35,40 @@ let initialState = {
     ],
     currentId: null,
     isFullMode: false,
+    search: '',
+    filteredDialogs: []
 }
+
+const searchItems = (dialogs, search) => {
+    if (!search.length) {
+        return dialogs
+    }
+    else {
+        return dialogs.filter((item) => {
+            return item.name.toLowerCase().indexOf(search.toLowerCase()) > -1;
+        })
+    }
+}
+
+//TODO: Доделать функцию, которая добавляет новго пользователя, чтобы логика была вынесена. 
+// const sendMessage = (dialogs, message, currentId) => {
+//     dialogs.map(dialogItem => {
+//         if (currentId === dialogItem.id) {
+//             let newMessage = {
+//                 id: dialogItem.messages.length === 0 ? 1 : dialogItem.messages.lenght + 1,
+//                 messages: message,
+//             }
+//             return {
+//                 ...dialogItem,
+//                 messages: [...dialogItem.messages, newMessage]
+//             }
+//         }
+//         console.log('dialogItem', dialogItem)
+//         return dialogItem
+//     })
+//     console.log('current return', dialogs)
+//     return dialogs
+// }
 
 const dialogsReduser = (state = initialState, action) => {
 
@@ -65,12 +101,27 @@ const dialogsReduser = (state = initialState, action) => {
                 ...state,
                 currentId: action.userId
             }
+        case ON_SEARCH_CHANGE: {
+            return {
+                ...state,
+                search: action.search,
+                filteredDialogs: searchItems(state.dialogs, action.search)
+            }
+        }
+        case INITIAL_FILTERED_DIALOGS: {
+            return {
+                ...state,
+                filteredDialogs: state.dialogs
+            }
+        }
         default:
             return state
     }
 }
-export const getCurrentUserId = (userId) => ({type: GET_CURRENT_USER_ID, userId: userId})
-export const fullMode = (value) => ({ type: FULL_MODE, value: value })
-export const sendMessageActionCreator = (message, userId) => ({ type: SEND_MESSAGE, message: message, userId: userId })
+export const getCurrentUserId = (userId) => ({ type: GET_CURRENT_USER_ID, userId })
+export const fullMode = (value) => ({ type: FULL_MODE, value })
+export const sendMessageActionCreator = (message, userId) => ({ type: SEND_MESSAGE, message, userId })
+export const onSearchChange = (search) => ({ type: ON_SEARCH_CHANGE, search })
+export const initialFilteredDialogs = () => ({ type: INITIAL_FILTERED_DIALOGS })
 
 export default dialogsReduser

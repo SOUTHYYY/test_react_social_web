@@ -5,13 +5,16 @@ import DialogsUsers from './DialogsUsers/DialogsUsers'
 
 
 const Dialogs = ({messagesPage, sendMessageActionCreator, isFullMode,
-    fullMode, currentId, getCurrentUserId}) => {
+    fullMode, currentId, getCurrentUserId, onSearchChange, filteredDialogs, initialFilteredDialogs}) => {
     return (
         <section className={styles.dialogs}>
-            <DialogsUsers 
+            <DialogsUsers
+                filteredDialogs={filteredDialogs}
+                onSearchChange={onSearchChange}
                 users={messagesPage.dialogs}
                 getCurrentUserId={getCurrentUserId}
-                isFullMode={isFullMode}/>
+                isFullMode={isFullMode}
+                initialFilteredDialogs={initialFilteredDialogs}/>
             <ChatField  
                 users={messagesPage.dialogs}
                 sendMessage={sendMessageActionCreator}

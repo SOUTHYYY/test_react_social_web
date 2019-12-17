@@ -2,8 +2,8 @@ import React from 'react'
 import {compose} from 'redux'
 import Profile from "./Profile";
 import {connect} from 'react-redux'
-import {getUserProfile, getUserStatus, updateUserStatus} from '../../redux/profile-reduser'
-import {requestUsers} from '../../redux/find-friends-reduser'
+import {getUserProfile, getUserStatus, updateUserStatus} from '../../redux/profile-redux/profile-reducer'
+import {requestUsers} from '../../redux/find-friends-redux/find-friends-reducer'
 import {withRouter} from 'react-router'
 import Prealoader from '../Common/Preloader/Preloader';
 import styles from './Profile.module.css'
